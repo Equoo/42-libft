@@ -21,5 +21,4 @@ clean:
 fclean: clean
 	rm -f $(NAME).a
 
-re: fclean all
-
+re: fclean alls
