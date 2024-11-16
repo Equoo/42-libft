@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:14:35 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/14 19:07:55 by dderny           ###   ########.fr       */
+/*   Created: 2024/11/09 13:22:03 by dderny            #+#    #+#             */
+/*   Updated: 2024/11/13 14:13:32 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-extern int	ft_isprint(int c)
+#include "libft.h"
+#include <stdlib.h>
+
+extern char	*ft_strrchr(const char *s, int c)
 {
-	if (c >= ' ' && c <= '~')
-		return (1);
-	return (0);
+	int	i;
+
+	i = ft_strlen(s) - 1;
+	if ((unsigned char)c == '\0')
+		return ((char *)s + i + 1);
+	while ((unsigned char)s[i] != (unsigned char)c && i >= 0)
+		i--;
+	if (i <= -1)
+		return (NULL);
+	return ((char *)s + i);
 }

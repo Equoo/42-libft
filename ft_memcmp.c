@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:14:35 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/14 19:07:55 by dderny           ###   ########.fr       */
+/*   Created: 2024/11/09 13:29:58 by dderny            #+#    #+#             */
+/*   Updated: 2024/11/13 14:50:10 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-extern int	ft_isprint(int c)
+#include <aio.h>
+
+extern int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	if (c >= ' ' && c <= '~')
-		return (1);
-	return (0);
+	unsigned char	*s1char;
+	unsigned char	*s2char;
+	size_t			i;
+
+	s1char = (unsigned char *)s1;
+	s2char = (unsigned char *)s2;
+	i = 0;
+	while (i < n && s1char[i] == s2char[i])
+		i++;
+	if (!n || i == n)
+		return (0);
+	else
+		return ((int)(s1char[i] - s2char[i]));
 }

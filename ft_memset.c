@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:14:35 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/14 19:07:55 by dderny           ###   ########.fr       */
+/*   Created: 2024/11/07 17:05:30 by dderny            #+#    #+#             */
+/*   Updated: 2024/11/07 17:44:53 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-extern int	ft_isprint(int c)
+#include <aio.h>
+
+extern void	*ft_memset(void *s, int c, size_t n)
 {
-	if (c >= ' ' && c <= '~')
-		return (1);
-	return (0);
+	char	*sint;
+
+	sint = (char *)s;
+	while (n-- > 0)
+	{
+		*sint = c;
+		sint++;
+	}
+	return (s);
 }

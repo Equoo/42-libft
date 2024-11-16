@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:14:35 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/14 19:07:55 by dderny           ###   ########.fr       */
+/*   Created: 2024/11/09 12:07:42 by dderny            #+#    #+#             */
+/*   Updated: 2024/11/14 18:36:26 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-extern int	ft_isprint(int c)
+#include <aio.h>
+
+extern void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (c >= ' ' && c <= '~')
-		return (1);
-	return (0);
+	char		*c_dest;
+	const char	*c_src;
+	size_t		i;
+
+	if (!dest && !src)
+		return (dest);
+	c_dest = (char *)dest;
+	c_src = (char *)src;
+	i = 0;
+	while (i < n)
+	{
+		c_dest[i] = c_src[i];
+		i++;
+	}
+	return (dest);
 }

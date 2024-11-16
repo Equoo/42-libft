@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:14:35 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/14 19:07:55 by dderny           ###   ########.fr       */
+/*   Created: 2024/11/09 13:22:03 by dderny            #+#    #+#             */
+/*   Updated: 2024/11/13 13:41:57 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-extern int	ft_isprint(int c)
+#include <stdlib.h>
+
+extern char	*ft_strchr(const char *s, int c)
 {
-	if (c >= ' ' && c <= '~')
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (s[i] && (unsigned char)s[i] != (unsigned char)c)
+		i++;
+	if (!s[i] && (unsigned char)c != '\0')
+		return (NULL);
+	return ((char *)s + i);
 }

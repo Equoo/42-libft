@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:14:35 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/14 19:07:55 by dderny           ###   ########.fr       */
+/*   Created: 2024/11/09 12:07:42 by dderny            #+#    #+#             */
+/*   Updated: 2024/11/12 17:16:36 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-extern int	ft_isprint(int c)
+#include <aio.h>
+#include "libft.h"
+
+extern size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 {
-	if (c >= ' ' && c <= '~')
-		return (1);
-	return (0);
+	size_t	i;
+
+	i = 0;
+	while (src[i] && i + 1 < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	if (n)
+		dest[i] = 0;
+	return ((size_t)ft_strlen(src));
 }

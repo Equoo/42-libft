@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:14:35 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/14 19:07:55 by dderny           ###   ########.fr       */
+/*   Created: 2024/11/07 17:45:18 by dderny            #+#    #+#             */
+/*   Updated: 2024/11/07 17:51:03 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-extern int	ft_isprint(int c)
+#include <aio.h>
+
+extern void	ft_bzero(void *s, size_t n)
 {
-	if (c >= ' ' && c <= '~')
-		return (1);
-	return (0);
+	char	*schar;
+	size_t	i;
+
+	schar = (char *)s;
+	i = 0;
+	while (i < n)
+		schar[i++] = 0;
 }

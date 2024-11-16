@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:14:35 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/14 19:07:55 by dderny           ###   ########.fr       */
+/*   Created: 2024/11/07 17:45:18 by dderny            #+#    #+#             */
+/*   Updated: 2024/11/15 18:29:41 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-extern int	ft_isprint(int c)
+#include <stdlib.h>
+#include "libft.h"
+
+extern void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	if (c >= ' ' && c <= '~')
-		return (1);
-	return (0);
+	char		*c_dest;
+	const char	*c_src;
+	size_t		i;
+
+	if (!dest && !src)
+		return (dest);
+	c_dest = (char *)dest;
+	c_src = (char *)src;
+	i = -1;
+	if (c_src < c_dest)
+		while (++i < n)
+			c_dest[n - i - 1] = c_src[n - i - 1];
+	else
+		while (++i < n)
+			c_dest[i] = c_src[i];
+	return (dest);
 }

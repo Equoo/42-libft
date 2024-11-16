@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 13:12:06 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/14 19:07:46 by dderny           ###   ########.fr       */
+/*   Created: 2024/11/12 10:39:55 by dderny            #+#    #+#             */
+/*   Updated: 2024/11/15 18:33:04 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdint.h>
+#include <stdlib.h>
 
-extern int	ft_isalnum(int c)
+extern char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	if (ft_isalpha(c) || ft_isdigit(c))
-	{
-		return (1);
-	}
-	return (0);
+	char	*res;
+	size_t	slen;
+
+	if (!s)
+		return (NULL);
+	slen = ft_strlen(s);
+	if (start <= slen)
+		slen -= start;
+	else
+		slen = 0;
+	if (slen < len || len == SIZE_MAX)
+		len = slen;
+	len++;
+	res = ft_calloc(len, sizeof(char));
+	if (!res)
+		return (NULL);
+	if (slen > 0)
+		ft_strlcpy(res, s + start, len);
+	return (res);
 }

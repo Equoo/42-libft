@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:14:35 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/14 19:07:55 by dderny           ###   ########.fr       */
+/*   Created: 2024/11/14 12:49:50 by dderny            #+#    #+#             */
+/*   Updated: 2024/11/14 13:44:54 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-extern int	ft_isprint(int c)
+#include "libft.h"
+#include "stdint.h"
+
+extern void	ft_putnbr_fd(int n, int fd)
 {
-	if (c >= ' ' && c <= '~')
-		return (1);
-	return (0);
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n *= -1;
+	}
+	if (n == INT32_MIN)
+	{
+		ft_putnbr_fd(INT32_MAX / 10, fd);
+		ft_putchar_fd('8', fd);
+	}
+	else
+	{
+		if (n / 10 != 0)
+			ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
+	}
 }
