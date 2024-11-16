@@ -6,16 +6,18 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:00:07 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/06 12:14:03 by dderny           ###   ########.fr       */
+/*   Updated: 2024/11/15 18:13:26 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
-{
-	int	len;
+#include <aio.h>
 
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+extern size_t	ft_strlen(const char *str)
+{
+	const char	*const_str;
+
+	const_str = str;
+	while (*const_str != '\0')
+		++const_str;
+	return (const_str - str);
 }

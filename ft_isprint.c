@@ -6,13 +6,13 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:14:35 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/06 12:14:32 by dderny           ###   ########.fr       */
+/*   Updated: 2024/11/14 19:07:55 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(char c)
+extern int	ft_isprint(int c)
 {
-	if (c >= 32 && c <= 126)
+	if (c >= ' ' && c <= '~')
 		return (1);
 	return (0);
 }

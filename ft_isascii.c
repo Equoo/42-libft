@@ -6,15 +6,15 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:14:35 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/06 12:08:46 by dderny           ###   ########.fr       */
+/*   Updated: 2024/11/14 19:12:29 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(char c)
+extern int	ft_isascii(int c)
 {
-	if (c > 0 && sizeof(c) == 1)
+	if ((c >= 0 && c <= 127))
 	{
 		return (1);
 	}
