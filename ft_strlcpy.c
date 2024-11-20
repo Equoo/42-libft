@@ -6,14 +6,14 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 12:07:42 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/12 17:16:36 by dderny           ###   ########.fr       */
+/*   Updated: 2024/11/20 11:59:51 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
+#include <stddef.h>
 #include "libft.h"
 
-extern size_t	ft_strlcpy(char *dest, const char *src, size_t n)
+size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 {
 	size_t	i;
 

@@ -6,13 +6,13 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:00:07 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/15 18:13:26 by dderny           ###   ########.fr       */
+/*   Updated: 2024/11/20 11:59:51 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
+#include <stddef.h>
 
-extern size_t	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	const char	*const_str;
 

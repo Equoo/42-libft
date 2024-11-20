@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:39:55 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/15 18:33:04 by dderny           ###   ########.fr       */
+/*   Updated: 2024/11/20 12:06:35 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-extern char	*ft_substr(const char *s, unsigned int start, size_t len)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	char	*res;
 	size_t	slen;

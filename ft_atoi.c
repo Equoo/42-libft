@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:29:33 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/14 17:33:47 by dderny           ###   ########.fr       */
+/*   Updated: 2024/11/17 12:41:30 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_isspace(const char c)
 	return (0);
 }
 
-extern int	ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int					i;
 	int					digits;
