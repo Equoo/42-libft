@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:08:09 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/15 18:33:21 by dderny           ###   ########.fr       */
+/*   Updated: 2024/11/17 12:41:30 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static short int	is_set(char c, const char *set)
 	return (0);
 }
 
-extern char	*ft_strtrim(const char *s1, const char *set)
+char	*ft_strtrim(const char *s1, const char *set)
 {
 	unsigned int	start;
 	size_t			end;

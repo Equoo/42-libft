@@ -6,13 +6,13 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 13:29:58 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/13 14:50:10 by dderny           ###   ########.fr       */
+/*   Updated: 2024/11/20 11:59:51 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
+#include <stddef.h>
 
-extern int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned char	*s1char;
 	unsigned char	*s2char;

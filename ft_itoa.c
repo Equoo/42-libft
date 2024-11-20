@@ -6,14 +6,14 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 17:39:23 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/13 18:28:37 by dderny           ###   ########.fr       */
+/*   Updated: 2024/11/17 12:41:30 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-extern char	*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		len;
 	long	nb;

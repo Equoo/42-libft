@@ -6,13 +6,13 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:45:18 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/07 17:51:03 by dderny           ###   ########.fr       */
+/*   Updated: 2024/11/20 11:59:51 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
+#include <stddef.h>
 
-extern void	ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	char	*schar;
 	size_t	i;
