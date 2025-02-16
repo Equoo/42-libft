@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_stradd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 17:45:18 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/17 12:41:30 by dderny           ###   ########.fr       */
+/*   Created: 2024/11/12 11:39:38 by dderny            #+#    #+#             */
+/*   Updated: 2025/01/28 16:23:18 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
+#include <stdlib.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_stradd(char *s1, char *s2)
 {
-	char		*c_dest;
-	const char	*c_src;
-	size_t		i;
+	size_t	total;
+	char	*str;
 
-	if (!dest && !src)
-		return (dest);
-	c_dest = (char *)dest;
-	c_src = (char *)src;
-	i = -1;
-	if (c_src < c_dest)
-		while (++i < n)
-			c_dest[n - i - 1] = c_src[n - i - 1];
-	else
-		while (++i < n)
-			c_dest[i] = c_src[i];
-	return (dest);
+	if (!s1 || !s2)
+		return (NULL);
+	total = ft_strlen(s1) + ft_strlen(s2) + 1;
+	str = ft_calloc(total, sizeof(char));
+	if (!str)
+	{
+		free(s1);
+		free(s2);
+		return (NULL);
+	}
+	ft_strlcpy(str, s1, total);
+	ft_strlcat(str, s2, total);
+	free(s1);
+	free(s2);
+	return (str);
 }
