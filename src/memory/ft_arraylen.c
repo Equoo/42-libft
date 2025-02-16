@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_arraylen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 13:52:47 by dderny            #+#    #+#             */
-/*   Updated: 2024/11/14 16:34:24 by dderny           ###   ########.fr       */
+/*   Created: 2025/02/09 12:10:42 by dderny            #+#    #+#             */
+/*   Updated: 2025/02/09 12:10:51 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
 
-int	ft_lstsize(t_list *lst)
+size_t	ft_arraylen(void **array)
 {
-	int	size;
+	size_t	len;
 
-	if (!lst)
-		return (0);
-	size = 1;
-	while (lst->next)
-	{
-		size++;
-		lst = lst->next;
-	}
-	return (size);
+	len = 0;
+	while (array[len])
+		len++;
+	return (len);
 }
