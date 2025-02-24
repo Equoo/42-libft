@@ -72,7 +72,9 @@ SRCS =	string/ft_split.c\
 		get_next_line/utils.c\
 		get_next_line/core.c\
 \
-		time/ft_uptime.c
+		time/ft_uptime.c\
+\
+		errno/ft_strerror.c\
 
 DIR_OBJ = obj/
 OBJS = ${patsubst %.c,$(DIR_OBJ)%.o, $(SRCS)}
