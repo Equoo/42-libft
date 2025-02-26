@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:33:05 by dderny            #+#    #+#             */
-/*   Updated: 2025/02/24 15:38:14 by dderny           ###   ########.fr       */
+/*   Updated: 2025/02/26 14:36:16 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static char	*ft_strerror3(int err)
 	return (ft_strerror4(err));
 }
 
-static char *ft_strerror2(int err)
+static char	*ft_strerror2(int err)
 {
 	if (err == ENOSPC)
 		return ("No space left on device");

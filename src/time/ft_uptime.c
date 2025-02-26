@@ -6,33 +6,44 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:28:29 by dderny            #+#    #+#             */
-/*   Updated: 2025/02/12 15:00:16 by dderny           ###   ########.fr       */
+/*   Updated: 2025/02/26 15:08:16 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_time.h"
 #include <fcntl.h>
-#include <stdlib.h>
 #include <unistd.h>
+
 #ifdef DEBUG
 # include <time.h>
-#endif
 
 static double	fix_time(double time)
 {
-  static double last = 0;
+	static double	last = 0;
 
-#ifdef DEBUG
-  time = (double)clock() / CLOCKS_PER_SEC;
-#endif
-  if (time < last)
-    time = last;
-  last = time;
-  if (time < 0)
-    return (0);
-  return (time);
+	time = (double)clock() / CLOCKS_PER_SEC;
+	if (time < last)
+		time = last;
+	last = time;
+	return (time);
 }
+
+#else
+
+static double	fix_time(double time)
+{
+	static double	last = 0;
+
+	if (time < last)
+		time = last;
+	last = time;
+	if (time < 0)
+		return (0);
+	return (time);
+}
+
+#endif
 
 double	ft_uptime(void)
 {
@@ -59,6 +70,4 @@ double	ft_uptime(void)
 		time = ft_atof((const char *)(timestr)) / 1000;
 	}
 	return (fix_time(time));
-  return (time);
 }
-
