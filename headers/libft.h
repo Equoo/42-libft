@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:41:08 by dderny            #+#    #+#             */
-/*   Updated: 2025/02/12 14:27:01 by dderny           ###   ########.fr       */
+/*   Updated: 2025/02/26 14:35:32 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -322,7 +322,7 @@ void				*ft_memmove(void *dest, const void *src, size_t n);
 void				*ft_memset(void *s, int c, size_t n);
 
 /**
-** @brief Erases the data in the n bytes of the memory starting at 
+** @brief Erases the data in the n bytes of the memory starting at
 **	the location pointed to by s, by writing zeros (bytes containing '\0')
 **	to that area.
 **
@@ -358,7 +358,7 @@ void				ft_freearray(void **array);
 ** @param array A pointer to the NULL-terminated array.
 ** @return The number of elements in the array, excluding the NULL terminator.
 */
-size_t	ft_arraylen(void **array);
+size_t				ft_arraylen(void **array);
 
 /* ************************************************************************** */
 /*                               NUMBER FUNCTIONS                             */
@@ -371,7 +371,6 @@ size_t	ft_arraylen(void **array);
 ** @return The converted value as an int.
 */
 int					ft_atoi(const char *str);
-
 
 /**
 ** @brief Converts the initial portion of the string pointed to by str to

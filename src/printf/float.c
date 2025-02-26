@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 10:59:44 by dderny            #+#    #+#             */
-/*   Updated: 2025/02/11 14:33:18 by dderny           ###   ########.fr       */
+/*   Updated: 2025/02/26 15:05:59 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*convertfloat(double nbr, t_pflag ptype, int *len)
 	return (str);
 }
 
-static int testfloat(double *nbr)
+static int	testfloat(double *nbr)
 {
 	return (*(long *)nbr >> 63);
 }

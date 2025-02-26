@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:16:10 by dderny            #+#    #+#             */
-/*   Updated: 2025/02/07 01:41:37 by dderny           ###   ########.fr       */
+/*   Updated: 2025/02/26 14:35:20 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,16 +91,20 @@ char			*convertchar(char c, int *len);
 char			*convertstr(va_list ap, t_pflag ptype, int *len);
 char			*convertfloat(double nbr, t_pflag ptype, int *len);
 
-
 /**
-** @brief Prints a formatted string to the standard output using a variable argument list.
+** @brief Prints a formatted string to the standard output using a variable
+** argument list.
 **
-** This function is similar to printf, but it takes a va_list argument instead of a variable number of arguments.
+** This function is similar to printf, but it takes a va_list
+** argument instead of a variable number of arguments.
 **
-** @param format The format string that specifies how subsequent arguments are converted for output.
-** @param ap A va_list that contains the variable arguments to be formatted and printed.
+** @param format The format string that specifies how subsequent
+** arguments are converted for output.
+** @param ap A va_list that contains the variable arguments to be
+** formatted and printed.
 **
-** @return The number of characters printed (excluding the null byte used to end output to strings).
+** @return The number of characters printed (excluding the null byte
+** used to end output to strings).
 */
 int				ft_vprintf(const char *format, va_list ap);
 

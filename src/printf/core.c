@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   core.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:16:10 by dderny            #+#    #+#             */
-/*   Updated: 2025/02/07 01:40:35 by dderny           ###   ########.fr       */
+/*   Updated: 2025/02/26 15:41:09 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,21 +105,16 @@ int	ft_vprintf(const char *format, va_list ap)
 	t_pdata	data;
 
 	i = -1;
-	data.count = 0;
-	data.last = 0;
-	data.str = NULL;
-	while (format[++i])
+	data = (t_pdata){0, 0, 0, NULL, 0};
+	while (format[++i] && data.next != -1)
 	{
 		data.next = processflag(ap, (char *)format + i, &data);
-		if (data.next == -1)
-			break ;
-		if (data.next == -2)
+		if (data.next == -1 || data.next == -2)
 			continue ;
-		if (write(STDOUT_FILENO, format + data.last, i - data.last) == -1)
+		if (!(write(STDOUT_FILENO, format + data.last, i - data.last) != -1
+				&& write(STDOUT_FILENO, data.str, data.strlen) != -1))
 			return (-1);
 		data.count += i - data.last + data.strlen;
-		if (write(STDOUT_FILENO, data.str, data.strlen) == -1)
-			return (-1);
 		free(data.str);
 		i = i + data.next;
 		data.last = i + 1;
