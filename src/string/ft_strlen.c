@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:00:07 by dderny            #+#    #+#             */
-/*   Updated: 2025/02/06 19:37:44 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/10 13:46:02 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <inttypes.h>
 #include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
 
 size_t	ft_strlen(const char *str)
 {
@@ -22,7 +24,7 @@ size_t	ft_strlen(const char *str)
 	while ((uintptr_t)str % sizeof(size_t))
 	{
 		if (!*str)
-			return (a - str);
+			return (str - a);
 		str++;
 	}
 	w = (const void *)str;
