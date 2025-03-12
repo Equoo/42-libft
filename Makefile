@@ -88,27 +88,28 @@ BLUE   := \033[1;34m
 YELLOW := \033[1;33m
 RED    := \033[1;31m
 RESET  := \033[0m
+ECHO   := /bin/echo
 
 .PHONY: all
 all: check_build
 	$(MAKE) -j$(shell nproc) --no-print-directory $(NAME)
 	@STATE=$$(cat $(STATE_FILE) 2>/dev/null || echo 0); \
 	if [ $$STATE -eq 1 ]; then \
-		echo -e "$(BLUE)[✓] Libft is up to date!$(RESET)"; \
+		$(ECHO) -e "$(BLUE)[✓] Libft is up to date!$(RESET)"; \
 	else \
-		echo -e "$(GREEN)[✓] Libft build completed!$(RESET)"; \
+		$(ECHO) -e "$(GREEN)[✓] Libft build completed!$(RESET)"; \
 	fi
 
 # Check if recompilation is needed
 .PHONY: check_build
 check_build:
-	@echo "0" > $(STATE_FILE);
+	@$(ECHO) "0" > $(STATE_FILE);
 	@if [ -z "$(wildcard $(OBJS))" ] || [ Makefile -nt $(NAME) ]; then \
-		echo -e "$(YELLOW)[Building libft]$(RESET)"; \
-		echo "0" > $(STATE_FILE); \
+		$(ECHO) -e "$(YELLOW)[Building libft]$(RESET)"; \
+		$(ECHO) "0" > $(STATE_FILE); \
 	elif ! find $(SRC_DIR) -type f -name '*.c' -newer $(NAME) | grep -q . && \
 		! find $(INC_DIR) -type f -name '*.h' -newer $(NAME) | grep -q .; then \
-		echo "1" > $(STATE_FILE); \
+		$(ECHO) "1" > $(STATE_FILE); \
 	fi
 
 .PHONY: debug
@@ -119,7 +120,7 @@ debug:
 	mkdir -p $@
 
 $(DIR_OBJ)%.o: $(SRC_DIR)%.c
-	@echo -e "\t$(YELLOW)Compiling $*.c$(RESET)"
+	@$(ECHO) -e "\t$(YELLOW)Compiling $*.c$(RESET)"
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -139,6 +140,6 @@ fclean: clean
 .PHONY: re
 re:
 	$(MAKE) fclean
-	$(MAKE) all 
+	$(MAKE) all
 
 .DEFAULT_GOAL = all
