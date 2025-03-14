@@ -63,6 +63,7 @@ SRCS =	string/ft_split.c\
 		convert/ft_atof.c\
 		convert/ft_atoll.c\
 		convert/ft_itoa.c\
+		convert/ft_strtol.c\
 \
 		printf/converts.c\
 		printf/nbrtostr.c\
