@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:41:08 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/13 01:06:00 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/14 15:52:51 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -322,7 +322,7 @@ void				*ft_memmove(void *dest, const void *src, size_t n);
 void				*ft_memset(void *s, int c, size_t n);
 
 /**
-** @brief Erases the data in the n bytes of the memory starting at 
+** @brief Erases the data in the n bytes of the memory starting at
 **	the location pointed to by s, by writing zeros (bytes containing '\0')
 **	to that area.
 **
@@ -359,6 +359,19 @@ void				ft_freearray(void **array);
 ** @return The number of elements in the array, excluding the NULL terminator.
 */
 size_t	ft_arraylen(void **array);
+
+/**
+** @brief Prints the memory content of a given address.
+**
+** This function prints the memory content starting from the specified address
+** up to the given size in bytes. The output format is typically in hexadecimal
+** representation, making it useful for debugging purposes.
+**
+** @param addr The starting address of the memory to be printed.
+** @param size The number of bytes to be printed from the starting address.
+** @return A pointer to the memory area addr.
+*/
+void	*ft_print_memory(void *addr, unsigned int size);
 
 /* ************************************************************************** */
 /*                               NUMBER FUNCTIONS                             */
@@ -405,11 +418,11 @@ char				*ft_itoa(int n);
 ** @brief Converts a string to a long integer.
 **
 ** This function converts the initial part of the string pointed to by nptr to a long integer value according to the given base.
-** 
+**
 ** @param nptr Pointer to the null-terminated string to be interpreted.
 ** @param endptr Pointer to a pointer to character. If endptr is not NULL, a pointer to the character after the last character used in the conversion is stored in the location referenced by endptr.
 ** @param base Base of the number in the string. Must be between 2 and 36 inclusive, or be the special value 0.
-** 
+**
 ** @return The converted value as a long integer.
 **         If no valid conversion could be performed, 0 is returned.
 **         If the value is out of range, LONG_MAX or LONG_MIN is returned and errno is set to ERANGE.
