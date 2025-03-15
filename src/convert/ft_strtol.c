@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 23:48:41 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/13 00:41:44 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/15 01:14:57 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,14 @@ static int	get_digit(char c, int base)
 
 static char	*process_start(char *str, int *base, int *sign)
 {
-	if (*base == 0 && *str == '0' && *str == 'x' && str++ && str++)
+	if (*base == 0 && *str == '0' && *(str + 1) == 'x' && str++ && str++)
 		*base = 16;
 	else if (*base == 0 && *str == '0' && str++)
 		*base = 8;
 	else if (*base == 0)
 		*base = 10;
-	while (*str && *str != '-' && *str != '+' && get_digit(*str, *base) != -1)
+	while (*str && *str != '-' && *str != '+'
+		&& get_digit(*str, *base) == -1)
 	{
 		if (!ft_isspace(*str) || str++)
 		{
@@ -62,7 +63,7 @@ long	ft_strtol(const char *nptr, char **endptr, int base)
 	str = (char *)nptr;
 	nbr = 0;
 	sign = 1;
-	str = process_start(str, &base, &sign);
+	nptr = process_start(str, &base, &sign);
 	if (!nptr)
 	{
 		if (endptr)
@@ -70,7 +71,7 @@ long	ft_strtol(const char *nptr, char **endptr, int base)
 		return (0);
 	}
 	while (*nptr && get_digit(*nptr, base) != -1)
-		nbr = nbr * base + get_digit(*nptr, base);
+		nbr = nbr * base + get_digit(*nptr++, base);
 	if (endptr)
 		*endptr = str;
 	nbr *= sign;
