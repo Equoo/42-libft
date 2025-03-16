@@ -71,6 +71,14 @@ SRCS =	string/ft_split.c\
 		printf/float.c\
 		printf/core.c\
 \
+		vec/vec_add.c\
+		vec/vec_append.c\
+		vec/vec_destroy.c\
+		vec/vec_extend.c\
+		vec/vec_get.c\
+		vec/vec_new.c\
+		vec/vec_set.c\
+\
 		get_next_line/utils.c\
 		get_next_line/core.c\
 \
