@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 23:48:41 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/15 01:14:57 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/16 17:14:21 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,15 @@ long	ft_strtol(const char *nptr, char **endptr, int base)
 	str = (char *)nptr;
 	nbr = 0;
 	sign = 1;
-	nptr = process_start(str, &base, &sign);
-	if (!nptr)
+	str = process_start(str, &base, &sign);
+	if (!str)
 	{
 		if (endptr)
-			*endptr = str;
+			*endptr = (char *)nptr;
 		return (0);
 	}
-	while (*nptr && get_digit(*nptr, base) != -1)
-		nbr = nbr * base + get_digit(*nptr++, base);
+	while (*str && get_digit(*str, base) != -1)
+		nbr = nbr * base + get_digit(*str++, base);
 	if (endptr)
 		*endptr = str;
 	nbr *= sign;
