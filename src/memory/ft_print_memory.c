@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 15:26:53 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/17 11:37:18 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/17 17:47:31 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_puthex_addr(unsigned long long int n)
 
 	i = 0;
 	addr[16] = '\0';
-	while (i++ < 17)
+	while (i++ < 16)
 	{
 		addr[16 - i] = "0123456789abcdef"[n % 16];
 		n /= 16;
@@ -69,7 +69,7 @@ void	iter_char(void *addr, int i, unsigned char *buf, int size)
 	}
 	if ((i != 0 && i % 16 == 0) || i == size - 1)
 	{
-		ft_puthex_addr((intptr_t) & addr[index]);
+		ft_puthex_addr((intptr_t)(addr + index));
 		write(1, buf, 56);
 		write(1, "\n", 1);
 		empty_by_space(buf);
