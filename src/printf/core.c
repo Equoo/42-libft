@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:16:10 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/17 09:49:56 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/17 11:37:30 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,4 +127,3 @@ int	ft_vdprintf(int fd, const char *format, va_list ap)
 		return (-1);
 	return (data.count);
 }
-
