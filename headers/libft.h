@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:41:08 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/26 22:10:16 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/26 23:34:32 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -539,6 +539,15 @@ void				ft_lstadd_back(t_list **lst, t_list *new);
 **	content of the node.
 */
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
+
+/**
+** @brief Deletes a node from the list.
+**
+** @param lst The node to delete.
+** @param del A function pointer to a function used to delete the
+**	content of the node.
+*/
+void				ft_lstrmone(t_list **lst, void (*del)(void *));
 
 /**
 ** @brief Deletes and frees all nodes of the list.

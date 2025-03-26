@@ -50,6 +50,7 @@ SRCS =	string/ft_split.c\
 		list/ft_lstadd_front.c\
 		list/ft_lstclear.c\
 		list/ft_lstdelone.c\
+		list/ft_lstrmone.c\
 		list/ft_lstiter.c\
 		list/ft_lstlast.c\
 		list/ft_lstmap.c\
