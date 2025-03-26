@@ -88,6 +88,7 @@ SRCS =	string/ft_split.c\
 		errno/ft_strerror.c\
 \
 		math/ft_abs.c\
+		math/ft_fabs.c\
 
 DIR_OBJ = obj/
 OBJS = ${patsubst %.c,$(DIR_OBJ)%.o, $(SRCS)}
