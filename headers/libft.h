@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:41:08 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/17 11:36:59 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/26 16:10:50 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -569,5 +569,17 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 */
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+
+/* ************************************************************************** */
+/*                                MATH FUNCTIONS                              */
+/* ************************************************************************** */
+
+/**
+** @brief Returns the absolute value of an integer.
+**
+** @param n The integer to compute the absolute value of.
+** @return The absolute value of the integer.
+*/
+int					ft_abs(int n);
 
 #endif
