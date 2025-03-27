@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstrmone.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 12:00:07 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/26 01:44:33 by dderny           ###   ########.fr       */
+/*   Created: 2024/11/14 13:52:47 by dderny            #+#    #+#             */
+/*   Updated: 2025/03/26 23:33:53 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <inttypes.h>
-#include <stddef.h>
+#include "libft.h"
+#include "stdlib.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_lstrmone(t_list **lst, void (*del)(void *))
 {
-	const char		*a;
-	const size_t	*w;
+	t_list	*tmp;
 
-	a = str;
-	while ((uintptr_t)str % sizeof(size_t))
-	{
-		if (!*str)
-			return (str - a);
-		str++;
-	}
-	w = (const void *)str;
-	while (!(((*w) - 0x0101010101010101) & ~(*w) & 0x8080808080808080))
-		w++;
-	str = (const void *)w;
-	while (*str)
-		str++;
-	return (str - a);
+	if (!lst || !del)
+		return ;
+	tmp = (*lst)->next;
+	del((*lst)->content);
+	free(lst);
+	*lst = tmp;
 }

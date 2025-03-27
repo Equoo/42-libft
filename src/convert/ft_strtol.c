@@ -6,12 +6,13 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 23:48:41 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/16 17:14:21 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/17 10:27:34 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+#include <limits.h>
 #include <errno.h>
 
 static int	get_digit(char c, int base)
@@ -54,6 +55,28 @@ static char	*process_start(char *str, int *base, int *sign)
 	return (str);
 }
 
+static char	*process_numbers(char *str, long *nbr, int sign, int base)
+{
+	int		digit;
+
+	digit = get_digit(*str, base);
+	while (*str && digit != -1)
+	{
+		if (*nbr > (LONG_MAX - digit) / base)
+		{
+			if (sign == 1)
+				*nbr = LONG_MAX;
+			else
+				*nbr = LONG_MIN;
+			errno = ERANGE;
+		}
+		else
+			*nbr = *nbr * base + digit;
+		digit = get_digit(*str++, base);
+	}
+	return (str);
+}
+
 long	ft_strtol(const char *nptr, char **endptr, int base)
 {
 	long	nbr;
@@ -70,8 +93,7 @@ long	ft_strtol(const char *nptr, char **endptr, int base)
 			*endptr = (char *)nptr;
 		return (0);
 	}
-	while (*str && get_digit(*str, base) != -1)
-		nbr = nbr * base + get_digit(*str++, base);
+	str = process_numbers(str, &nbr, sign, base);
 	if (endptr)
 		*endptr = str;
 	nbr *= sign;
