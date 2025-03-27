@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 09:47:32 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/17 09:50:47 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/28 00:08:21 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_dprintf(int fd, const char *format, ...)
 	va_list	ap;
 	int		count;
 
-	if (!format)
+	if (fd < 0 || !format)
 		return (-1);
 	va_start(ap, format);
 	count = ft_vdprintf(fd, format, ap);

@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:16:10 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/28 00:05:38 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/28 00:08:13 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,6 @@ int	ft_vdprintf(int fd, const char *format, va_list ap)
 	int		i;
 	t_pdata	data;
 
-	if (fd < 0 || !format)
-		return (-1);
 	i = -1;
 	data = (t_pdata){0, 0, 0, NULL, 0};
 	while (format[++i] && data.next != -1)
@@ -117,7 +115,7 @@ int	ft_vdprintf(int fd, const char *format, va_list ap)
 			continue ;
 		if (!(write(STDOUT_FILENO, format + data.last, i - data.last) != -1
 				&& write(STDOUT_FILENO, data.str, data.strlen) != -1))
-			return (-1);
+			return (printf_error_free(data));
 		data.count += i - data.last + data.strlen;
 		free(data.str);
 		i = i + data.next;

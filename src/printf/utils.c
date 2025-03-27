@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:45:48 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/28 00:03:13 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/28 00:08:37 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	m_atoi(char **str)
 	return ((int)res);
 }
 
-int printf_error_free(t_pdata data)
+int	printf_error_free(t_pdata data)
 {
 	if (data.str)
 		free(data.str);
