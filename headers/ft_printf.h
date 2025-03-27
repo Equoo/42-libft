@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:16:10 by dderny            #+#    #+#             */
-/*   Updated: 2025/02/26 14:35:20 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/28 00:03:28 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef struct s_pdata
 	char		*str;
 	int			strlen;
 }				t_pdata;
+
+int 			printf_error_free(t_pdata data);
 
 char			*ft_lltoa_base(long long n, t_ltoainfo info, int *strlen);
 char			*ft_ultoa_base(unsigned long n, t_ltoainfo info, int *strlen);

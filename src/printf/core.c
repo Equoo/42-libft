@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:16:10 by dderny            #+#    #+#             */
-/*   Updated: 2025/02/26 15:41:09 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/28 00:02:50 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,13 @@ int	ft_vprintf(const char *format, va_list ap)
 	while (format[++i] && data.next != -1)
 	{
 		data.next = processflag(ap, (char *)format + i, &data);
-		if (data.next == -1 || data.next == -2)
+		if (data.next == -1 && printf_error_free(data))
+			break ;
+		if (data.next == -2)
 			continue ;
 		if (!(write(STDOUT_FILENO, format + data.last, i - data.last) != -1
 				&& write(STDOUT_FILENO, data.str, data.strlen) != -1))
-			return (-1);
+			return (printf_error_free(data));
 		data.count += i - data.last + data.strlen;
 		free(data.str);
 		i = i + data.next;
