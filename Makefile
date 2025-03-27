@@ -50,6 +50,7 @@ SRCS =	string/ft_split.c\
 		list/ft_lstadd_front.c\
 		list/ft_lstclear.c\
 		list/ft_lstdelone.c\
+		list/ft_lstrmone.c\
 		list/ft_lstiter.c\
 		list/ft_lstlast.c\
 		list/ft_lstmap.c\
@@ -70,6 +71,7 @@ SRCS =	string/ft_split.c\
 		printf/utils.c\
 		printf/float.c\
 		printf/core.c\
+		printf/printf.c\
 \
 		vec/vec_add.c\
 		vec/vec_append.c\
@@ -85,6 +87,9 @@ SRCS =	string/ft_split.c\
 		time/ft_uptime.c\
 \
 		errno/ft_strerror.c\
+\
+		math/ft_abs.c\
+		math/ft_fabs.c\
 
 DIR_OBJ = obj/
 OBJS = ${patsubst %.c,$(DIR_OBJ)%.o, $(SRCS)}

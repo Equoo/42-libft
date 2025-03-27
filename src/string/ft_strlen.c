@@ -6,14 +6,12 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:00:07 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/10 13:46:02 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/26 01:44:33 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <inttypes.h>
 #include <stddef.h>
-#include <stdint.h>
-#include <stdio.h>
 
 size_t	ft_strlen(const char *str)
 {
