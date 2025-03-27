@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:41:08 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/26 23:34:32 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/27 14:13:44 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -597,6 +597,6 @@ int					ft_abs(int n);
 ** @param n The float to compute the absolute value of.
 ** @return The absolute value of the float.
 */
-int					ft_fabs(int n);
+float				ft_fabs(float n);
 
 #endif
