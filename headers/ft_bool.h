@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:39:22 by dderny            #+#    #+#             */
-/*   Updated: 2025/02/19 10:45:59 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/28 02:12:09 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ typedef enum e_bool
 {
 	FALSE,
 	TRUE
-}				t_bool;
+}				t_ft_bool;
+
+typedef _Bool	t_bool;
 
 #endif
