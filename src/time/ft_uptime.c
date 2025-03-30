@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:28:29 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/30 21:52:06 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/30 22:05:00 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ double	ft_uptime(void)
 	len = read(fd, line, 255);
 	if (len == -1)
 		return (-1);
-	if (!close(fd))
+	if (close(fd) == -1)
 		return (-1);
 	line[len] = 0;
 	timestr = ft_strnstr(line, TIME_PARSE, len);
