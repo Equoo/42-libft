@@ -18,6 +18,7 @@ SRCS =	string/ft_split.c\
 		string/ft_strlcpy.c\
 		string/ft_strlen.c\
 		string/ft_strmapi.c\
+		string/ft_strcmp.c\
 		string/ft_strncmp.c\
 		string/ft_strnstr.c\
 		string/ft_strrchr.c\
