@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:52:47 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/26 23:33:53 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/31 17:29:10 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 
 void	ft_lstrmone(t_list **lst, void (*del)(void *))
 {
+	void	*tmpcontent;
 	t_list	*tmp;
 
 	if (!lst || !del)
 		return ;
 	tmp = (*lst)->next;
-	del((*lst)->content);
-	free(lst);
+	tmpcontent = (*lst)->content;
+	free(*lst);
 	*lst = tmp;
+	del(tmpcontent);
 }
