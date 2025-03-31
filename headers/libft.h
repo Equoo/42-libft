@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:41:08 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/27 14:13:44 by dderny           ###   ########.fr       */
+/*   Updated: 2025/03/31 23:23:16 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,16 @@ char				*ft_strrchr(const char *s, int c);
 **	respectively, to be less than, to match, or be greater than s2.
 */
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+
+/**
+** @brief Compares characters of the strings s1 and s2.
+**
+** @param s1 The first string to be compared.
+** @param s2 The second string to be compared.
+** @return An integer less than, equal to, or greater than zero if s1 is found,
+**	respectively, to be less than, to match, or be greater than s2.
+*/
+int					ft_strcmp(const char *s1, const char *s2);
 
 /**
 ** @brief Locates the first occurrence of the null-terminated string find in
