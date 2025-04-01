@@ -6,7 +6,7 @@
 /*   By: dderny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:41:08 by dderny            #+#    #+#             */
-/*   Updated: 2025/03/31 23:23:16 by dderny           ###   ########.fr       */
+/*   Updated: 2025/04/01 15:02:39 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -422,6 +422,17 @@ long long			ft_atoll(const char *str);
 ** @return A pointer to the resulting null-terminated string.
 */
 char				*ft_itoa(int n);
+
+/**
+** @brief Converts an integer value to a null-terminated string using
+**	the specified base and stores the result in the array
+**	given by strparameter.
+**
+** @param n The integer to be converted.
+** @param dst String destination.
+** @return Len of the conversion
+*/
+int					ft_itoato(int n, char *dst);
 
 /**
 ** @brief Converts a string to a long integer.
