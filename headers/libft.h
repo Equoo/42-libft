@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@42lyon.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:41:08 by dderny            #+#    #+#             */
-/*   Updated: 2025/04/02 20:51:14 by dderny           ###   ########.fr       */
+/*   Updated: 2025/04/03 15:34:25 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -455,6 +455,28 @@ int					ft_itoato(int n, char *dst);
 **				is set to ERANGE.
 */
 long				ft_strtol(const char *nptr, char **endptr, int base);
+
+/**
+** @brief Converts a string to a int integer.
+**
+** This function converts the initial part of the string pointed to by
+**	nptr to a int integer value according to the given base.
+**
+** @param nptr Pointer to the null-terminated string to be interpreted.
+** @param endptr Pointer to a pointer to character. If endptr is not NULL,
+**	a pointer to the character after the last character used in the conversion
+**	is stored in the location referenced by endptr.
+** @param base Base of the number in the string. Must be between 2
+**	and 36 inclusive,
+**	or be the special value 0.
+**
+** @return The converted value as a int integer.
+**         If no valid conversion could be performed, 0 is returned.
+**         If the value is out of range,
+	INT_MAX or INT_MIN is returned and errno
+**				is set to ERANGE.
+*/
+int					ft_strtoi(const char *nptr, char **endptr, int base);
 
 /* ************************************************************************** */
 /*                               PRINT FUNCTIONS                              */

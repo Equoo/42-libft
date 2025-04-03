@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtol.c                                        :+:      :+:    :+:   */
+/*   ft_strtoi.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dderny <dderny@42lyon.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 23:48:41 by dderny            #+#    #+#             */
-/*   Updated: 2025/04/03 15:31:44 by dderny           ###   ########.fr       */
+/*   Updated: 2025/04/03 15:34:17 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,19 @@ static char	*process_start(char *str, int *base, int *sign)
 	return (str);
 }
 
-static char	*process_numbers(char *str, long *nbr, int sign, int base)
+static char	*process_numbers(char *str, int *nbr, int sign, int base)
 {
 	int		digit;
 
 	digit = get_digit(*str, base);
 	while (*str && digit != -1)
 	{
-		if (*nbr > (LONG_MAX - digit) / base)
+		if (*nbr > (INT_MAX - digit) / base)
 		{
 			if (sign == 1)
-				*nbr = LONG_MAX;
+				*nbr = INT_MAX;
 			else
-				*nbr = LONG_MIN;
+				*nbr = INT_MAX;
 			errno = ERANGE;
 		}
 		else
@@ -77,9 +77,9 @@ static char	*process_numbers(char *str, long *nbr, int sign, int base)
 	return (str);
 }
 
-long	ft_strtol(const char *nptr, char **endptr, int base)
+int	ft_strtoi(const char *nptr, char **endptr, int base)
 {
-	long	nbr;
+	int		nbr;
 	int		sign;
 	char	*str;
 
