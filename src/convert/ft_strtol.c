@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@42lyon.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 23:48:41 by dderny            #+#    #+#             */
-/*   Updated: 2025/04/03 15:31:44 by dderny           ###   ########.fr       */
+/*   Updated: 2025/04/04 16:15:05 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static char	*process_numbers(char *str, long *nbr, int sign, int base)
 		}
 		else
 			*nbr = *nbr * base + digit;
-		digit = get_digit(*str++, base);
+		digit = get_digit(*++str, base);
 	}
 	return (str);
 }
