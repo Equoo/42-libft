@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@42lyon.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 23:48:41 by dderny            #+#    #+#             */
-/*   Updated: 2025/04/04 16:15:05 by dderny           ###   ########.fr       */
+/*   Updated: 2025/04/06 01:39:44 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,15 @@ static char	*process_start(char *str, int *base, int *sign)
 		*base = 8;
 	else if (*base == 0)
 		*base = 10;
-	while (*str && *str != '-' && *str != '+'
+	while (*str && ft_isspace(*str))
+		str++;
+	while (*str && *str == '0')
+		str++;
+	if (*str != '-' && *str != '+'
 		&& get_digit(*str, *base) == -1)
 	{
-		if (!ft_isspace(*str) || str++)
-		{
-			errno = EINVAL;
-			return (NULL);
-		}
+		errno = EINVAL;
+		return (NULL);
 	}
 	if (*str == '-' && str++)
 		*sign = -1;
@@ -62,13 +63,15 @@ static char	*process_numbers(char *str, long *nbr, int sign, int base)
 	digit = get_digit(*str, base);
 	while (*str && digit != -1)
 	{
-		if (*nbr > (LONG_MAX - digit) / base)
+		if ((sign == 1 && *nbr > (LONG_MAX - digit) / base)
+			|| (sign == -1 && *nbr > (-(LONG_MIN + digit)) / base))
 		{
 			if (sign == 1)
 				*nbr = LONG_MAX;
 			else
 				*nbr = LONG_MIN;
 			errno = ERANGE;
+			break ;
 		}
 		else
 			*nbr = *nbr * base + digit;
