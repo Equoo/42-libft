@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec_extend.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dderny <dderny@42lyon.fr>                  +#+  +:+       +#+        */
+/*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 16:49:59 by dderny            #+#    #+#             */
-/*   Updated: 2025/04/02 20:51:14 by dderny           ###   ########.fr       */
+/*   Updated: 2025/04/15 01:32:06 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ ssize_t	vec_extend(t_vector *vec, ssize_t x)
 		free(vec->data);
 		return (0);
 	}
-	ft_memcpy(data, vec->data, vec->actual_size);
-	ft_bzero(data + vec->actual_size, vec->size - vec->actual_size);
+	ft_memcpy(data, vec->data, vec->actual_size * vec->type_size);
+	ft_bzero(data + vec->actual_size * vec->type_size,
+			(vec->size - vec->actual_size) * vec->type_size);
 	free(vec->data);
 	vec->data = data;
 	return (vec->size);
