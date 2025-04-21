@@ -95,6 +95,8 @@ SRCS =	string/ft_split.c\
 		math/ft_fabs.c\
 		math/ft_min.c\
 		math/ft_max.c\
+		math/ft_max.c\
+		math/ft_lerp.c\
 
 DIR_OBJ = obj/
 OBJS = ${patsubst %.c,$(DIR_OBJ)%.o, $(SRCS)}

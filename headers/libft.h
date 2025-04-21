@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@42lyon.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:41:08 by dderny            #+#    #+#             */
-/*   Updated: 2025/04/18 22:33:40 by dderny           ###   ########.fr       */
+/*   Updated: 2025/04/21 15:00:18 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -647,5 +647,7 @@ float				ft_fmin(float a, float b);
 
 int					ft_max(int a, int b);
 float				ft_fmax(float a, float b);
+
+float				ft_lerp(float a, float b, float t);
 
 #endif
