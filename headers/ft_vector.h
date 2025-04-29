@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vector.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dderny <dderny@42lyon.fr>                  +#+  +:+       +#+        */
+/*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:25:37 by dderny            #+#    #+#             */
-/*   Updated: 2025/04/02 20:51:14 by dderny           ###   ########.fr       */
+/*   Updated: 2025/04/30 01:44:51 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_vector
 }			t_vector;
 
 t_vector	vec_new(ssize_t start_size, uint8_t type_size);
-void		vec_destroy(t_vector *vec);
+int			vec_destroy(t_vector *vec);
 ssize_t		vec_extend(t_vector *vec, ssize_t x);
 t_vector	vec_add(const t_vector veca, const t_vector vecb);
 
