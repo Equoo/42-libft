@@ -58,6 +58,11 @@ SRCS =	string/ft_split.c\
 		list/ft_lstnew.c\
 		list/ft_lstsize.c\
 \
+		write/ft_putchar_fd.c\
+		write/ft_putendl_fd.c\
+		write/ft_putnbr_fd.c\
+		write/ft_putstr_fd.c\
+\
 		mm256/bit.c\
 		mm256/math.c\
 \
