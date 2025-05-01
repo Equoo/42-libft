@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   core.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dderny <dderny@42lyon.fr>                  +#+  +:+       +#+        */
+/*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:16:10 by dderny            #+#    #+#             */
-/*   Updated: 2025/04/02 20:51:14 by dderny           ###   ########.fr       */
+/*   Updated: 2025/05/01 14:20:29 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ int	ft_vdprintf(int fd, const char *format, va_list ap)
 			break ;
 		if (data.next == -2)
 			continue ;
-		if (!(write(STDOUT_FILENO, format + data.last, i - data.last) != -1
-				&& write(STDOUT_FILENO, data.str, data.strlen) != -1))
+		if (!(write(fd, format + data.last, i - data.last) != -1
+				&& write(fd, data.str, data.strlen) != -1))
 			return (printf_error_free(data));
 		data.count += i - data.last + data.strlen;
 		free(data.str);
