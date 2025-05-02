@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:25:37 by dderny            #+#    #+#             */
-/*   Updated: 2025/04/30 01:44:51 by dderny           ###   ########.fr       */
+/*   Updated: 2025/05/03 00:44:07 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_vector	vec_new(ssize_t start_size, uint8_t type_size);
 int			vec_destroy(t_vector *vec);
 ssize_t		vec_extend(t_vector *vec, ssize_t x);
 t_vector	vec_add(const t_vector veca, const t_vector vecb);
+t_vector	vec_from_string(char *str);
 
 int			vec_set(t_vector *vec, ssize_t index, void *val);
 void		*vec_get(t_vector *vec, ssize_t index);
