@@ -87,6 +87,7 @@ SRCS =	string/ft_split.c\
 		vec/vec_extend.c\
 		vec/vec_get.c\
 		vec/vec_new.c\
+		vec/vec_from_string.c\
 		vec/vec_set.c\
 \
 		get_next_line/utils.c\
