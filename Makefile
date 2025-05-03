@@ -143,7 +143,7 @@ check_build:
 
 .PHONY: debug
 debug:
-	$(MAKE) -j$(shell nproc) --no-print-directory ADDFLAGS="-D DEBUG=1" $(NAME)
+	$(MAKE) -j$(shell nproc) --no-print-directory ADDFLAGS="-D DEBUG=1 -g3" $(NAME)
 
 %/:
 	mkdir -p $@
