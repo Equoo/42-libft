@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_extend.c                                       :+:      :+:    :+:   */
+/*   vec_append_ulong.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/15 16:49:59 by dderny            #+#    #+#             */
-/*   Updated: 2025/05/03 02:58:41 by dderny           ###   ########.fr       */
+/*   Created: 2025/03/15 16:29:56 by dderny            #+#    #+#             */
+/*   Updated: 2025/05/03 04:14:33 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
-#include "libft.h"
 #include <stdint.h>
-#include <stdlib.h>
+#include <sys/types.h>
 
-ssize_t	vec_extend(t_vector *vec, ssize_t x)
+int	vec_append_ulong(t_vector *vec, u_long val)
 {
-	uint8_t	*data;
-
-	vec->size = vec->size << x;
-	data = malloc(vec->size * vec->type_size);
-	if (!data)
-	{
-		free(vec->data);
-		return (0);
-	}
-	ft_memcpy(data, vec->data, vec->actual_size * vec->type_size);
-	ft_bzero(data + vec->actual_size * vec->type_size,
-		(vec->size - vec->actual_size) * vec->type_size);
-	free(vec->data);
-	vec->data = data;
-	return (vec->size);
+	return (vec_append(vec, &val));
 }
