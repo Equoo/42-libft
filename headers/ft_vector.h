@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:25:37 by dderny            #+#    #+#             */
-/*   Updated: 2025/05/03 05:51:00 by dderny           ###   ########.fr       */
+/*   Updated: 2025/05/03 09:20:07 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int			vec_append_ulong(t_vector *vec, u_long val);
 t_vector	vec_insert(const t_vector veca, const t_vector vecb, size_t index);
 int			vec_remove(t_vector *vec, ssize_t index);
 int			vec_append_int(t_vector *vec, int val);
+int			vec_insert_int(t_vector *vec, int val, ssize_t index);
 
 int			vec_set(t_vector *vec, ssize_t index, void *val);
 void		*vec_get(t_vector *vec, ssize_t index);
