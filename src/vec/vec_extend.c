@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 16:49:59 by dderny            #+#    #+#             */
-/*   Updated: 2025/05/03 02:58:41 by dderny           ###   ########.fr       */
+/*   Updated: 2025/05/05 05:14:59 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ ssize_t	vec_extend(t_vector *vec, ssize_t x)
 	uint8_t	*data;
 
 	vec->size = vec->size << x;
+	if (vec->size < 4)
+		vec->size = 4;
 	data = malloc(vec->size * vec->type_size);
 	if (!data)
 	{
