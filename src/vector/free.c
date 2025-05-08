@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dderny <dderny@42lyon.fr>                  +#+  +:+       +#+        */
+/*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/09 14:48:23 by dderny            #+#    #+#             */
-/*   Updated: 2025/04/02 20:51:14 by dderny           ###   ########.fr       */
+/*   Created: 2025/05/08 16:44:36 by dderny            #+#    #+#             */
+/*   Updated: 2025/05/08 16:45:08 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdint.h>
+#include "ft_vector.h"
 #include <stdlib.h>
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*vec_free(t_vec vector)
 {
-	void	*array;
+	t_vec_header	*header;
 
-	array = NULL;
-	if ((unsigned long long)nmemb * (unsigned long long)size > SIZE_MAX)
+	if (!vector)
 		return (NULL);
-	array = malloc(nmemb * size);
-	if (!array)
-		return (NULL);
-	ft_memset(array, 0, nmemb * size);
-	return (array);
+	header = _vec_header(vector);
+	ft_free(header);
+	return (NULL);
 }
