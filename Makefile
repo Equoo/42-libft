@@ -37,8 +37,8 @@ SRCS =	string/ft_split.c\
 \
 		memory/ft_freearray.c\
 		memory/ft_arraylen.c\
-		memory/ft_bzero.c\
 		memory/ft_calloc.c\
+		memory/ft_bzero.c\
 		memory/ft_memcpy.c\
 		memory/ft_memchr.c\
 		memory/ft_memcmp.c\
@@ -46,6 +46,25 @@ SRCS =	string/ft_split.c\
 		memory/ft_memmove.c\
 		memory/ft_memset.c\
 		memory/ft_print_memory.c\
+\
+		vector/append.c\
+		vector/insert.c\
+		vector/cat.c\
+		vector/clear.c\
+		vector/copy.c\
+		vector/remove.c\
+		vector/pop.c\
+		vector/size.c\
+		vector/new.c\
+		vector/header.c\
+		vector/free.c\
+		vector/capacity.c\
+\
+		alloc/ft_calloc.c\
+		alloc/ft_realloc.c\
+		alloc/allocs.c\
+		alloc/ft_free.c\
+		alloc/ft_alloc.c\
 \
 		list/ft_lstadd_back.c\
 		list/ft_lstadd_front.c\
@@ -81,20 +100,6 @@ SRCS =	string/ft_split.c\
 		printf/core.c\
 		printf/printf.c\
 \
-		vec/vec_add.c\
-		vec/vec_append.c\
-		vec/vec_destroy.c\
-		vec/vec_extend.c\
-		vec/vec_get.c\
-		vec/vec_append_int.c\
-		vec/vec_append_ulong.c\
-		vec/vec_insert.c\
-		vec/vec_remove.c\
-		vec/vec_insert_int.c\
-		vec/vec_new.c\
-		vec/vec_from_string.c\
-		vec/vec_set.c\
-\
 		get_next_line/utils.c\
 		get_next_line/core.c\
 \
@@ -108,7 +113,7 @@ SRCS =	string/ft_split.c\
 		math/ft_max.c\
 		math/ft_max.c\
 		math/ft_lerp.c\
-		math/ft_clamp.c\
+		math/ft_clamp.c
 
 DIR_OBJ = obj/
 OBJS = ${patsubst %.c,$(DIR_OBJ)%.o, $(SRCS)}

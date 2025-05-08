@@ -5,40 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 14:25:37 by dderny            #+#    #+#             */
-/*   Updated: 2025/05/03 09:20:07 by dderny           ###   ########.fr       */
+/*   Created: 2025/05/05 22:25:29 by dderny            #+#    #+#             */
+/*   Updated: 2025/05/08 17:22:13 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_VECTOR_H
 # define FT_VECTOR_H
-
+# include <stddef.h>
 # include <stdint.h>
-# include <stdio.h>
-# include <sys/types.h>
+# include <stdlib.h>
 
-typedef struct s_vector
+# define ALLOC_VECTOR 2048
+
+typedef struct t_vec_header
 {
-	uint8_t	*data;
-	uint8_t	type_size;
-	ssize_t	start_size;
-	ssize_t	actual_size;
-	ssize_t	size;
-}			t_vector;
+	size_t			type_size;
+	size_t			capacity;
+	size_t			size;
+	unsigned char	data[];
+}					t_vec_header;
 
-t_vector	vec_new(ssize_t start_size, uint8_t type_size);
-int			vec_destroy(t_vector *vec);
-ssize_t		vec_extend(t_vector *vec, ssize_t x);
-t_vector	vec_add(const t_vector veca, const t_vector vecb);
-t_vector	vec_from_string(char *str);
-int			vec_append_ulong(t_vector *vec, u_long val);
-t_vector	vec_insert(const t_vector veca, const t_vector vecb, size_t index);
-int			vec_remove(t_vector *vec, ssize_t index);
-int			vec_append_int(t_vector *vec, int val);
-int			vec_insert_int(t_vector *vec, int val, ssize_t index);
+typedef void * t_vec;
 
-int			vec_set(t_vector *vec, ssize_t index, void *val);
-void		*vec_get(t_vector *vec, ssize_t index);
-int			vec_append(t_vector *vec, void *val);
+t_vec_header *_vec_header(t_vec vector);
+
+t_vec	vec_new(size_t element_size, size_t initial_capacity);
+t_vec	vec_copy(t_vec *vector);
+void	*vec_free(t_vec vector);
+
+size_t	vec_size(t_vec vector);
+size_t	vec_capacity(t_vec vector);
+t_vec	vec_append(t_vec *vector, void *element);
+t_vec	vec_pop(t_vec *vector);
+t_vec	vec_insert(t_vec *vector, size_t index, void *element);
+t_vec	vec_cat(t_vec *a, t_vec *b);
+void	vec_remove(t_vec vector, size_t index);
+void	vec_clear(t_vec vector);
 
 #endif
