@@ -6,13 +6,14 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:41:08 by dderny            #+#    #+#             */
-/*   Updated: 2025/05/08 22:48:48 by dderny           ###   ########.fr       */
+/*   Updated: 2025/05/12 13:05:49 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stddef.h>
+# include <sys/types.h>
 
 /* ************************************************************************** */
 /*                               CHAR FUNCTIONS                               */
@@ -289,7 +290,7 @@ typedef struct s__allocs
 	size_t			size;
 }					t__allocs;
 
-t__allocs *__get_ft_allocations(void);
+t__allocs			*__get_ft_allocations(void);
 
 /**
 ** @brief Allocates memory of the given size and returns a pointer to it.
@@ -298,7 +299,7 @@ t__allocs *__get_ft_allocations(void);
 ** @param mapid The map id to associate with the allocation.
 ** @return A pointer to the allocated memory, or NULL if the allocation fails.
 */
-void	*ft_xalloc(size_t size, size_t mapid);
+void				*ft_xalloc(size_t size, size_t mapid);
 
 /**
 ** @brief Allocates memory of the given size and returns a pointer to it.
@@ -307,7 +308,7 @@ void	*ft_xalloc(size_t size, size_t mapid);
 ** @param size The size of memory to allocate.
 ** @return A pointer to the allocated memory, or NULL if the allocation fails.
 */
-void	*ft_alloc(size_t size);
+void				*ft_alloc(size_t size);
 
 /**
 ** @brief Allocates memory of the given size and initializes it to zero.
@@ -315,7 +316,7 @@ void	*ft_alloc(size_t size);
 ** @param mapid The map id to associate with the allocation.
 ** @return A pointer to the allocated memory, or NULL if the allocation fails.
 */
-void	*ft_xcalloc(size_t size, size_t mapid);
+void				*ft_xcalloc(size_t size, size_t mapid);
 
 /**
 ** @brief Reallocates memory to the given size and returns a pointer to it.
@@ -324,7 +325,7 @@ void	*ft_xcalloc(size_t size, size_t mapid);
 ** @param mapid The map id to associate with the allocation.
 ** @return A pointer to the reallocated memory, or NULL if the allocation fails.
 */
-void	*ft_xrealloc(void *ptr, size_t size, size_t mapid);
+void				*ft_xrealloc(void *ptr, size_t size, size_t mapid);
 
 /**
 ** @brief Reallocates memory to the given size and returns a pointer to it.
@@ -332,7 +333,7 @@ void	*ft_xrealloc(void *ptr, size_t size, size_t mapid);
 ** @param size The new size of memory to allocate.
 ** @return A pointer to the reallocated memory, or NULL if the allocation fails.
 */
-void	*ft_realloc(void *ptr, size_t size);
+void				*ft_realloc(void *ptr, size_t size);
 
 /**
 ** @brief Frees the memory pointed to by ptr.
@@ -340,14 +341,14 @@ void	*ft_realloc(void *ptr, size_t size);
 ** @param ptr The pointer to the memory to free.
 ** @return NULL
 */
-void	*ft_free(void *ptr);
+void				*ft_free(void *ptr);
 
 /**
 ** @brief Frees the memory associated with the given mapid.
 ** @param mapid The map id of the memory to free.
 ** @return NULL
 */
-void	*ft_xfree(size_t mapid);
+void				*ft_xfree(size_t mapid);
 
 /**
 ** @brief Compares the first n bytes of memory areas s1 and s2.
@@ -405,6 +406,8 @@ void				*ft_memmove(void *dest, const void *src, size_t n);
 ** @return A pointer to the memory area s.
 */
 void				*ft_memset(void *s, int c, size_t n);
+
+void				*ft_memsetint(u_int *s, u_int v, size_t n);
 
 /**
 ** @brief Erases the data in the n bytes of the memory starting at

@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 14:02:07 by dderny            #+#    #+#             */
-/*   Updated: 2025/05/08 23:17:43 by dderny           ###   ########.fr       */
+/*   Updated: 2025/05/12 13:03:44 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,3 @@ void	*ft_alloc(size_t size)
 {
 	return (ft_xalloc(size, 0));
 }
-
