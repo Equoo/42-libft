@@ -45,6 +45,7 @@ SRCS =	string/ft_split.c\
 		memory/ft_memcpy.c\
 		memory/ft_memmove.c\
 		memory/ft_memset.c\
+		memory/ft_memsetint.c\
 		memory/ft_print_memory.c\
 \
 		vector/append.c\

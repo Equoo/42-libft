@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:03:34 by dderny            #+#    #+#             */
-/*   Updated: 2025/05/08 23:11:39 by dderny           ###   ########.fr       */
+/*   Updated: 2025/05/12 13:04:35 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void	*ft_free(void *ptr)
 		return (NULL);
 	}
 	ft_dprintf(STDERR_FILENO,
-		"Error: trying to free a pointer that was not allocated by ft_alloc\n"
-		);
+		"Error: trying to free a pointer that was not allocated by ft_alloc\n");
 	free(ptr);
 	return (NULL);
 }
+
 void	*ft_xfree(size_t mapid)
 {
 	t__allocs	*data;
@@ -52,7 +52,7 @@ void	*ft_xfree(size_t mapid)
 	while (i < data->size)
 	{
 		if (data->allocations[i].ptr && (mapid == 0
-			|| data->allocations[i].mapid == mapid))
+				|| data->allocations[i].mapid == mapid))
 		{
 			free(data->allocations[i].ptr);
 			data->allocations[i] = (t__alloc){NULL, 0, 0};
@@ -62,8 +62,7 @@ void	*ft_xfree(size_t mapid)
 	return (NULL);
 }
 
-__attribute__((destructor))
-void	*garbage_collector()
+__attribute__((destructor)) void	*garbage_collector(void)
 {
 	t__allocs	*data;
 	size_t		total;
@@ -84,8 +83,7 @@ void	*garbage_collector()
 	}
 	free(data->allocations);
 	if (total && DEBUG)
-		ft_dprintf(STDERR_FILENO,
-			"Warning: total memory leak: %u bytes\n",
+		ft_dprintf(STDERR_FILENO, "Warning: total memory leak: %u bytes\n",
 			total);
 	return (NULL);
 }
