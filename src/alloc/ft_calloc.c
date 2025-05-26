@@ -6,13 +6,13 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:12:12 by dderny            #+#    #+#             */
-/*   Updated: 2025/05/08 16:33:25 by dderny           ###   ########.fr       */
+/*   Updated: 2025/05/26 04:19:50 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_xcalloc(size_t size, size_t mapid)
+void	*ft_xcalloc(size_t size, id_t mapid)
 {
 	void	*ptr;
 
