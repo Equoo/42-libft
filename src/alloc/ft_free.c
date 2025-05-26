@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:03:34 by dderny            #+#    #+#             */
-/*   Updated: 2025/05/12 13:04:35 by dderny           ###   ########.fr       */
+/*   Updated: 2025/05/26 04:19:00 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include <stddef.h>
 #include <stdlib.h>
+#include <sys/types.h>
 #include <unistd.h>
 
 void	*ft_free(void *ptr)
@@ -40,7 +41,7 @@ void	*ft_free(void *ptr)
 	return (NULL);
 }
 
-void	*ft_xfree(size_t mapid)
+void	*ft_xfree(id_t mapid)
 {
 	t__allocs	*data;
 	size_t		i;
@@ -52,7 +53,7 @@ void	*ft_xfree(size_t mapid)
 	while (i < data->size)
 	{
 		if (data->allocations[i].ptr && (mapid == 0
-				|| data->allocations[i].mapid == mapid))
+				|| data->allocations[i].mapid & mapid))
 		{
 			free(data->allocations[i].ptr);
 			data->allocations[i] = (t__alloc){NULL, 0, 0};

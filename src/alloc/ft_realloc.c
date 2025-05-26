@@ -6,14 +6,14 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:12:57 by dderny            #+#    #+#             */
-/*   Updated: 2025/05/08 23:17:34 by dderny           ###   ########.fr       */
+/*   Updated: 2025/05/26 04:19:59 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-void	*ft_xrealloc(void *ptr, size_t size, size_t mapid)
+void	*ft_xrealloc(void *ptr, size_t size, id_t mapid)
 {
 	void	*new_ptr;
 

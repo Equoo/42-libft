@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 14:02:07 by dderny            #+#    #+#             */
-/*   Updated: 2025/05/12 13:03:44 by dderny           ###   ########.fr       */
+/*   Updated: 2025/05/26 04:19:27 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	*ft_xalloc(size_t size, size_t mapid)
+void	*ft_xalloc(size_t size, id_t mapid)
 {
 	t__allocs	*data;
 	t__alloc	*tmp;
