@@ -6,13 +6,14 @@
 /*   By: dderny <dderny@42lyon.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:16:10 by dderny            #+#    #+#             */
-/*   Updated: 2025/04/02 20:51:14 by dderny           ###   ########.fr       */
+/*   Updated: 2025/10/30 11:54:52 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <stdarg.h>
+# include <stddef.h>
 
 # define BASE10 "0123456789"
 # define BASE16L "0123456789abcdef0x"
@@ -164,5 +165,10 @@ int				ft_printf(const char *format, ...);
 **         end output to strings), or a negative value if an output error occurs.
 */
 int				ft_dprintf(int fd, const char *format, ...);
+int				ft_vsnprintf(char *str, size_t size, const char *format,
+					va_list ap);
+int				ft_snprintf(char *str, size_t size, const char *format, ...);
+
+
 
 #endif

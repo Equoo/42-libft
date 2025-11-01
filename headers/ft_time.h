@@ -22,4 +22,7 @@
 */
 double	ft_uptime(void);
 
+
+double  curtime_us(void);
+
 #endif

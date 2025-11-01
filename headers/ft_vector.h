@@ -16,7 +16,7 @@
 # include <stdint.h>
 # include <stdlib.h>
 
-# define ALLOC_VECTOR 2048
+# define ALLOC_VECTOR 1024
 
 typedef struct t_vec_header
 {
@@ -36,7 +36,7 @@ void				*vec_free(t_vec vector);
 
 size_t				vec_size(t_vec vector);
 size_t				vec_capacity(t_vec vector);
-t_vec				vec_append(t_vec *vector, void *element);
+int 				vec_append(t_vec *vector, void *element);
 t_vec				vec_pop(t_vec *vector);
 t_vec				vec_insert(t_vec *vector, size_t index, void *element);
 t_vec				vec_cat(t_vec *a, t_vec *b);

@@ -12,11 +12,11 @@
 
 #include "libft.h"
 
-void	*ft_xcalloc(size_t size, id_t mapid)
+void	*ft_xcalloc(t__xgarbage *garbage, size_t size, id_t mapid)
 {
 	void	*ptr;
 
-	ptr = ft_xalloc(size, mapid);
+	ptr = ft_xalloc(garbage, size, mapid);
 	if (!ptr)
 		return (NULL);
 	ft_bzero(ptr, size);

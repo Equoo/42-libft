@@ -7,8 +7,8 @@ DIR_OBJ = obj/
 SRC_DIR = src/
 INC_DIR = headers/
 
-ADDFLAGS =
-CFLAGS = -Wall -Wextra -Werror -MMD -O3 -mavx2 $(ADDFLAGS) -I $(INC_DIR)
+ADDFLAGS = -D DEBUG=0
+CFLAGS = -Wall -Wextra -Werror -MMD -mavx2 $(ADDFLAGS) -I $(INC_DIR)
 SRCS =	string/ft_split.c\
 		string/ft_strchr.c\
 		string/ft_strchrpos.c\
@@ -100,11 +100,13 @@ SRCS =	string/ft_split.c\
 		printf/float.c\
 		printf/core.c\
 		printf/printf.c\
+		printf/snprintf.c\
 \
 		get_next_line/utils.c\
 		get_next_line/core.c\
 \
 		time/ft_uptime.c\
+		time/curtime_us.c\
 \
 		errno/ft_strerror.c\
 \
@@ -155,6 +157,10 @@ check_build:
 .PHONY: debug
 debug:
 	$(MAKE) -j$(shell nproc) --no-print-directory ADDFLAGS="-D DEBUG=1 -g3" $(NAME)
+
+.PHONY: release
+release:
+	$(MAKE) -j$(shell nproc) --no-print-directory ADDFLAGS="-D DEBUG=0 -O3" $(NAME)
 
 %/:
 	mkdir -p $@
