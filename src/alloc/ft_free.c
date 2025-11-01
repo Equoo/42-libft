@@ -19,10 +19,12 @@
 
 void	*ft_free(void *ptr)
 {
-	t__allocs	*data;
+	t__xgarbage	*data;
 	size_t		i;
 
-	data = __get_ft_allocations();
+	if (!ptr)
+		return (NULL);
+	data = (t__xgarbage *)(ptr - sizeof(t__xgarbage));
 	if (!data->allocations)
 	{
 		free(ptr);
@@ -32,7 +34,7 @@ void	*ft_free(void *ptr)
 	if (i < data->size && data->allocations[i].ptr == ptr - sizeof(size_t))
 	{
 		free(data->allocations[i].ptr);
-		data->allocations[i] = (t__alloc){NULL, 0, 0};
+		data->allocations[i] = (t__alloc){0};
 		return (NULL);
 	}
 	ft_dprintf(STDERR_FILENO,
@@ -41,14 +43,10 @@ void	*ft_free(void *ptr)
 	return (NULL);
 }
 
-void	*ft_xfree(id_t mapid)
+void	*ft_xfree(t__xgarbage *data, id_t mapid)
 {
-	t__allocs	*data;
 	size_t		i;
 
-	data = __get_ft_allocations();
-	if (!data->allocations)
-		return (NULL);
 	i = 0;
 	while (i < data->size)
 	{
@@ -56,20 +54,19 @@ void	*ft_xfree(id_t mapid)
 				|| data->allocations[i].mapid & mapid))
 		{
 			free(data->allocations[i].ptr);
-			data->allocations[i] = (t__alloc){NULL, 0, 0};
+			data->allocations[i] = (t__alloc){0};
 		}
 		i++;
 	}
 	return (NULL);
 }
 
-__attribute__((destructor)) void	*garbage_collector(void)
+//__attribute__((destructor)) 
+void	*garbage_collector(t__xgarbage *data)
 {
-	t__allocs	*data;
 	size_t		total;
 	size_t		i;
 
-	data = __get_ft_allocations();
 	if (!data->allocations)
 		return (NULL);
 	i = 0;

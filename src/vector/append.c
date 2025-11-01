@@ -13,24 +13,24 @@
 #include "libft.h"
 #include "ft_vector.h"
 
-t_vec	vec_append(t_vec *vector, void *element)
+int	vec_append(t_vec *vector, void *element)
 {
 	t_vec_header	*header;
 	size_t			new_capacity;
 
 	if (!vector || !*vector)
-		return (NULL);
+		return (1);
 	header = _vec_header(*vector);
 	if (header->size >= header->capacity)
 	{
 		new_capacity = header->capacity * 2;
 		header = ft_xrealloc(header, new_capacity, ALLOC_VECTOR);
 		if (!header)
-			return (NULL);
+			return (1);
 		*vector = header->data;
 	}
 	ft_memcpy(header->data + header->size * header->type_size, element,
 		header->type_size);
 	header->size++;
-	return (header->data);
+	return (0);
 }

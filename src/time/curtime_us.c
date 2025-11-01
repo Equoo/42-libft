@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_time.h                                          :+:      :+:    :+:   */
+/*   curtime_us.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dderny <dderny@42lyon.fr>                  +#+  +:+       +#+        */
+/*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 14:25:37 by dderny            #+#    #+#             */
-/*   Updated: 2025/04/02 20:51:14 by dderny           ###   ########.fr       */
+/*   Created: 2025/09/24 19:51:53 by dderny            #+#    #+#             */
+/*   Updated: 2025/09/24 19:53:03 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_TIME_H
-# define FT_TIME_H
+#include <sys/time.h>
+#include <stdlib.h>
 
-# define TIME_PARSE "se.exec_start"
+double curtime_us(void)
+{
+    struct timeval  tv;
 
-/**
-** @brief Get the current time in seconds
-**
-** @return time in seconds since the start of the program
-*/
-double	ft_uptime(void);
+    gettimeofday(&tv, NULL);
+    return ((double)tv.tv_sec + (double)tv.tv_usec / 1000000);
+}
 
-
-double  curtime_us(void);
-
-#endif
