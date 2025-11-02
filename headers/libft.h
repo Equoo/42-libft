@@ -296,6 +296,8 @@ struct s__xgarbage
 	size_t			size;
 };
 
+void				*garbage_collector(t__xgarbage *data);
+
 int					_garbage_init(t__xgarbage *garbage);
 
 t__alloc			*_alloc_header(void *ptr);
