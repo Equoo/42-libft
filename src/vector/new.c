@@ -13,13 +13,15 @@
 #include "ft_vector.h"
 #include "libft.h"
 
-t_vec	vec_new(size_t element_size, size_t initial_capacity)
+t_vec	vec_new(t__xgarbage *garbage,
+	size_t element_size, size_t initial_capacity)
 {
 	t_vec_header	*vector;
 
 	if (initial_capacity == 0)
 		initial_capacity = 1;
-	vector = ft_xcalloc(sizeof(t_vec_header) + initial_capacity * element_size,
+	vector = ft_xcalloc(garbage,
+			sizeof(t_vec_header) + initial_capacity * element_size,
 			ALLOC_VECTOR);
 	if (!vector)
 		return (NULL);

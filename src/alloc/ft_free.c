@@ -19,22 +19,25 @@
 
 void	*ft_free(void *ptr)
 {
+	t__alloc	*alloc;
 	t__xgarbage	*data;
-	size_t		i;
+	size_t		id;
 
 	if (!ptr)
 		return (NULL);
-	data = (t__xgarbage *)(ptr - sizeof(t__xgarbage));
+	alloc = _alloc_header(ptr);
+	data = alloc->garbage;
 	if (!data->allocations)
 	{
 		free(ptr);
 		return (NULL);
 	}
-	i = *((size_t *)ptr - 1);
-	if (i < data->size && data->allocations[i].ptr == ptr - sizeof(size_t))
+	id = alloc->id;
+	if (id < data->size && data->allocations[id] == alloc)
 	{
-		free(data->allocations[i].ptr);
-		data->allocations[i] = (t__alloc){0};
+		free(alloc);
+		data->allocations[id] = NULL;
+		data->last_freed = id;
 		return (NULL);
 	}
 	ft_dprintf(STDERR_FILENO,
@@ -50,12 +53,9 @@ void	*ft_xfree(t__xgarbage *data, id_t mapid)
 	i = 0;
 	while (i < data->size)
 	{
-		if (data->allocations[i].ptr && (mapid == 0
-				|| data->allocations[i].mapid & mapid))
-		{
-			free(data->allocations[i].ptr);
-			data->allocations[i] = (t__alloc){0};
-		}
+		if (data->allocations[i] && (mapid == 0
+				|| data->allocations[i]->mapid & mapid))
+			ft_free(data->allocations[i]);
 		i++;
 	}
 	return (NULL);
@@ -73,15 +73,16 @@ void	*garbage_collector(t__xgarbage *data)
 	total = 0;
 	while (i < data->size)
 	{
-		if (!data->allocations[i].ptr && ++i)
+		if (!data->allocations[i] && ++i)
 			continue ;
-		free(data->allocations[i].ptr);
-		total += data->allocations[i].size;
+		total += data->allocations[i]->size;
+		ft_free(data->allocations[i]);
 		i++;
 	}
 	free(data->allocations);
 	if (total && DEBUG)
-		ft_dprintf(STDERR_FILENO, "Warning: total memory leak: %u bytes\n",
+		ft_dprintf(STDERR_FILENO,
+			"Warning: total memory garbage collected: %u bytes\n",
 			total);
 	return (NULL);
 }

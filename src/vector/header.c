@@ -17,17 +17,3 @@ t_vec_header	*_vec_header(t_vec vector)
 {
 	return ((t_vec_header *)vector - 1);
 }
-
-t_vec_header	*_vec_realloc(t_vec_header *vector, size_t new_capacity)
-{
-	t_vec_header	*new_vector;
-
-	if (new_capacity == 0)
-	{
-		free(vector);
-		return (NULL);
-	}
-	new_vector = ft_realloc(vector, sizeof(t_vec_header) + new_capacity
-			* vector->type_size);
-	return (new_vector);
-}
