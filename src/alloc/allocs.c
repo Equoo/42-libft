@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 t__xgarbage	*_alloc_garbage(void *ptr)
 {
@@ -20,4 +21,13 @@ t__xgarbage	*_alloc_garbage(void *ptr)
 t__alloc	*_alloc_header(void *ptr)
 {
 	return ((t__alloc *)ptr - 1);
+}
+
+int	_garbage_init(t__xgarbage *garbage)
+{
+	*garbage = (t__xgarbage){NULL, -1, 4, 0, 0};
+	garbage->allocations = malloc(sizeof(t__alloc) * garbage->capacity);
+	if (!garbage->allocations)
+		return (1);
+	return (0);
 }
