@@ -129,13 +129,12 @@ int	ft_vdprintf(int fd, const char *format, va_list ap)
 	return (data.count);
 }
 
-
 void	shame_vsnprintf(t_pdata data, char *str, size_t i);
 
 int	ft_vsnprintf(char *str, size_t size, const char *format, va_list ap)
 {
 	size_t		i;
-	t_pdata	data;
+	t_pdata		data;
 
 	i = -1;
 	data = (t_pdata){0, 0, 0, NULL, 0};

@@ -13,27 +13,30 @@
 #include "libft.h"
 #include <stdlib.h>
 
-void	*ft_xrealloc(void *ptr, size_t size, id_t mapid)
+void	*ft_xrealloc(t__xgarbage *garbage, void *ptr, size_t size, id_t mapid)
 {
 	void	*new_ptr;
 
 	if (size == 0)
 	{
 		if (ptr)
-			free(ptr);
+			ft_free(ptr);
 		return (NULL);
 	}
 	if (!ptr)
-		return (ft_xalloc(size, mapid));
-	new_ptr = ft_xalloc(size, mapid);
+		return (ft_xalloc(garbage, size, mapid));
+	new_ptr = ft_xalloc(garbage, size, mapid);
 	if (!new_ptr)
+	{
+		ft_free(ptr);
 		return (NULL);
+	}
 	ft_memcpy(new_ptr, ptr, size);
-	free(ptr);
+	ft_free(ptr);
 	return (new_ptr);
 }
 
-void	*ft_realloc(void *ptr, size_t size)
+void	*ft_realloc(t__xgarbage *garbage, void *ptr, size_t size)
 {
-	return (ft_xrealloc(ptr, size, 0));
+	return (ft_xrealloc(garbage, ptr, size, 0));
 }

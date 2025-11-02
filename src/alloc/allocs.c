@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-t__allocs	*__get_ft_allocations(void)
+t__xgarbage	*_alloc_garbage(void *ptr)
 {
-	static t__allocs	data = {NULL, 4, 0, 0};
+	return (((t__alloc *)ptr - 1)->garbage);
+}
 
-	if (!data.allocations)
-		data.allocations = malloc(sizeof(t__alloc) * data.capacity);
-	return (&data);
+t__alloc	*_alloc_header(void *ptr)
+{
+	return ((t__alloc *)ptr - 1);
 }

@@ -24,7 +24,8 @@ int	vec_append(t_vec *vector, void *element)
 	if (header->size >= header->capacity)
 	{
 		new_capacity = header->capacity * 2;
-		header = ft_xrealloc(header, new_capacity, ALLOC_VECTOR);
+		header = ft_xrealloc(_alloc_garbage(header),
+				header, new_capacity, ALLOC_VECTOR);
 		if (!header)
 			return (1);
 		*vector = header->data;

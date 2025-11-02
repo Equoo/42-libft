@@ -13,6 +13,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stddef.h>
+# include <stdio.h>
 # include <sys/types.h>
 
 /* ************************************************************************** */
@@ -275,23 +276,28 @@ int					ft_strcmp(const char *s1, const char *s2);
 /*                               MEMORY FUNCTIONS                             */
 /* ************************************************************************** */
 
-typedef struct s__xgarbage t__xgarbage;
+typedef struct s__xgarbage	t__xgarbage;
 
 typedef struct s__alloc
 {
+	size_t			id;
 	size_t			size;
 	size_t			mapid;
 	t__xgarbage		*garbage;
-	void			*ptr;
+	unsigned char	ptr[];
 }					t__alloc;
 
 struct s__xgarbage
 {
-	t__alloc		*allocations;
+	t__alloc		**allocations;
+	size_t			last_freed;
 	size_t			capacity;
 	size_t			freed;
 	size_t			size;
 };
+
+t__alloc			*_alloc_header(void *ptr);
+t__xgarbage			*_alloc_garbage(void *ptr);
 
 /**
 ** @brief Allocates memory of the given size and returns a pointer to it.
@@ -326,7 +332,8 @@ void				*ft_xcalloc(t__xgarbage *garbage, size_t size, id_t mapid);
 ** @param mapid The map id to associate with the allocation.
 ** @return A pointer to the reallocated memory, or NULL if the allocation fails.
 */
-void				*ft_xrealloc(void *ptr, size_t size, id_t mapid);
+void				*ft_xrealloc(t__xgarbage *garbage,
+						void *ptr, size_t size, id_t mapid);
 
 /**
 ** @brief Reallocates memory to the given size and returns a pointer to it.
@@ -334,7 +341,7 @@ void				*ft_xrealloc(void *ptr, size_t size, id_t mapid);
 ** @param size The new size of memory to allocate.
 ** @return A pointer to the reallocated memory, or NULL if the allocation fails.
 */
-void				*ft_realloc(void *ptr, size_t size);
+void				*ft_realloc(t__xgarbage *garbage, void *ptr, size_t size);
 
 /**
 ** @brief Frees the memory pointed to by ptr.

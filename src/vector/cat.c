@@ -13,18 +13,19 @@
 #include "libft.h"
 #include "ft_vector.h"
 
-t_vec	vec_cat(t_vec *a, t_vec *b)
+t_vec	vec_cat(t_vec *a, const t_vec b)
 {
 	t_vec_header	*header_a;
 	t_vec_header	*header_b;
 	size_t			new_capacity;
 
-	if (!a || !*a || !b || !*b)
+	if (!a || !*a || !b)
 		return (NULL);
 	header_a = _vec_header(*a);
-	header_b = _vec_header(*b);
+	header_b = _vec_header(b);
 	new_capacity = header_a->capacity + header_b->capacity;
-	header_a = ft_xrealloc(header_a, new_capacity, ALLOC_VECTOR);
+	header_a = ft_xrealloc(_alloc_garbage(header_a),
+			header_a, new_capacity, ALLOC_VECTOR);
 	if (!header_a)
 		return (NULL);
 	ft_memcpy(header_a->data + header_a->size * header_a->type_size,

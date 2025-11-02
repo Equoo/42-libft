@@ -13,32 +13,54 @@
 #include "libft.h"
 #include <stddef.h>
 #include <stdlib.h>
+#include <sys/types.h>
 #include <unistd.h>
+
+static void	*alloc(t__xgarbage *garbage, t__alloc *ptr, size_t size, id_t mapid)
+{
+	ptr = malloc(sizeof(t__alloc) + size);
+	if (!ptr)
+		return (NULL);
+	*ptr = (t__alloc){0};
+	ptr->size = size;
+	ptr->mapid = mapid;
+	ptr->garbage = garbage;
+	if (garbage->last_freed == (size_t)-1)
+	{
+		garbage->allocations[garbage->size] = ptr;
+		ptr->id = garbage->size;
+		garbage->size++;
+	}
+	else
+	{
+		garbage->allocations[garbage->last_freed] = ptr;
+		ptr->id = garbage->last_freed;
+		garbage->last_freed = -1;
+	}
+	return (ptr + 1);
+}
 
 void	*ft_xalloc(t__xgarbage *garbage, size_t size, id_t mapid)
 {
-	t__alloc	*tmp;
-	void		*ptr;
+	t__alloc	*ptr;
 
+	ptr = NULL;
 	if (!garbage->allocations)
 		return (NULL);
-	if (garbage->allocations && garbage->size >= garbage->capacity)
+	if (garbage->last_freed == (size_t)-1
+		&& garbage->allocations
+		&& garbage->size >= garbage->capacity)
 	{
 		garbage->capacity *= 2;
-		tmp = malloc(sizeof(t__alloc) * garbage->capacity);
-		if (!tmp)
+		ptr = malloc(sizeof(t__alloc *) * garbage->capacity);
+		if (!ptr)
 			return (NULL);
-		ft_memcpy(tmp, garbage->allocations, sizeof(t__alloc) * garbage->size);
+		ft_memcpy(ptr, garbage->allocations,
+			sizeof(t__alloc *) * garbage->size);
 		free(garbage->allocations);
-		garbage->allocations = tmp;
+		garbage->allocations = (t__alloc **)ptr;
 	}
-	ptr = malloc(size + sizeof(size_t));
-	if (!ptr)
-		return (NULL);
-	*(size_t *)ptr = garbage->size;
-	garbage->allocations[garbage->size] = (t__alloc){size, mapid, garbage, ptr};
-	garbage->size++;
-	return (ptr + sizeof(size_t));
+	return (alloc(garbage, ptr, size, mapid));
 }
 
 void	*ft_alloc(t__xgarbage *garbage, size_t size)

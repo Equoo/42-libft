@@ -21,14 +21,11 @@ t_vec	vec_copy(t_vec *vector)
 	if (!vector || !*vector)
 		return (NULL);
 	old_vector = _vec_header(*vector);
-	new_vector = ft_xalloc(old_vector->capacity * old_vector->type_size,
-			ALLOC_VECTOR);
+	new_vector = ft_xalloc(_alloc_garbage(old_vector),
+			old_vector->capacity * old_vector->type_size, ALLOC_VECTOR);
 	if (!new_vector)
 		return (NULL);
-	ft_memcpy(new_vector->data, old_vector->data, old_vector->size
-		* old_vector->type_size);
-	new_vector->type_size = old_vector->type_size;
-	new_vector->capacity = old_vector->capacity;
-	new_vector->size = old_vector->size;
+	ft_memcpy(new_vector, old_vector, sizeof(t_vec_header)
+		+ old_vector->size * old_vector->type_size);
 	return (new_vector->data);
 }
