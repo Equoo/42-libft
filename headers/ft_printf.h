@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dderny <dderny@42lyon.fr>                  +#+  +:+       +#+        */
+/*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:16:10 by dderny            #+#    #+#             */
-/*   Updated: 2025/10/30 11:54:52 by dderny           ###   ########.fr       */
+/*   Updated: 2025/11/18 02:28:28 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,85 +14,6 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include <stddef.h>
-
-# define BASE10 "0123456789"
-# define BASE16L "0123456789abcdef0x"
-# define BASE16U "0123456789ABCDEF0X"
-
-# define ATRIBUTES "# 0+-"
-# define ATRIBUTESLEN 6
-# define FLAGS "cspdiuxX%fq"
-
-typedef enum e_prnt_flag
-{
-	F_TAG,
-	F_SPACE,
-	F_ZERO,
-	F_PLUS,
-	F_MINUS,
-	F_POINT,
-	F_CHAR,
-	F_STRING,
-	F_POINTER,
-	F_DECIMAL,
-	F_INT,
-	F_UNSIGNED,
-	F_HEXAL,
-	F_HEXAU,
-	F_PERCENT,
-	F_FLOAT,
-	F_NONE
-}				t_prnt_flag;
-
-typedef struct s_pflag
-{
-	t_prnt_flag	flag;
-	int			atributs[ATRIBUTESLEN];
-	int			min;
-}				t_pflag;
-
-typedef struct s_nbrbase
-{
-	char		*str;
-	int			len;
-}				t_nbrbase;
-
-typedef struct s_ltoainfo
-{
-	t_nbrbase	base;
-	char		sign;
-	int			zeros;
-	int			zeronbr;
-	char		*prefix;
-}				t_ltoainfo;
-
-typedef struct s_pdata
-{
-	int			last;
-	int			next;
-	int			count;
-	char		*str;
-	int			strlen;
-}				t_pdata;
-
-int				printf_error_free(t_pdata data);
-
-char			*ft_lltoa_base(long long n, t_ltoainfo info, int *strlen);
-char			*ft_ultoa_base(unsigned long n, t_ltoainfo info, int *strlen);
-char			*ft_ftoa(double nbr, t_ltoainfo info, int *strlen);
-
-char			*ft_strfreejoin(const char *s1, const char *s2, int free1,
-					int free2);
-char			*justifytxt(char *str, int reverse, int len, int *strlen);
-int				m_atoi(char **str);
-
-char			*convertnbr(va_list ap, t_pflag ptype, int *len);
-char			*convertpointer(va_list ap, t_pflag ptype, int *len);
-char			*converthexa(long long nbr, t_nbrbase base, t_pflag ptype,
-					int *len);
-char			*convertchar(char c, int *len);
-char			*convertstr(va_list ap, t_pflag ptype, int *len);
-char			*convertfloat(double nbr, t_pflag ptype, int *len);
 
 /**
 ** @brief Prints a formatted string to the standard output using a variable
@@ -165,8 +86,8 @@ int				ft_printf(const char *format, ...);
 **         end output to strings), or a negative value if an output error occurs.
 */
 int				ft_dprintf(int fd, const char *format, ...);
-int				ft_vsnprintf(char *str, size_t size, const char *format,
-					va_list ap);
-int				ft_snprintf(char *str, size_t size, const char *format, ...);
+
+int	format(char *str, const size_t size, char *format, ...);
+int	vformat(char *str, const size_t size, char *format, va_list ap);
 
 #endif

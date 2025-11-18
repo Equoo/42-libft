@@ -18,6 +18,14 @@ int	ft_min(int a, int b)
 		return (b);
 }
 
+long int	ft_lmin(long int a, long int b)
+{
+	if (a < b)
+		return (a);
+	else
+		return (b);
+}
+
 float	ft_fmin(float a, float b)
 {
 	if (a < b)

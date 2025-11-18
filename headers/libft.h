@@ -732,9 +732,11 @@ int					ft_abs(int n);
 float				ft_fabs(float n);
 
 int					ft_min(int a, int b);
+long int			ft_lmin(long int a, long int b);
 float				ft_fmin(float a, float b);
 
 int					ft_max(int a, int b);
+long int			ft_lmax(long int a, long int b);
 float				ft_fmax(float a, float b);
 
 float				ft_lerp(float a, float b, float t);
