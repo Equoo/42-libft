@@ -18,6 +18,14 @@ int	ft_max(int a, int b)
 		return (a);
 }
 
+long int	ft_lmax(long int a, long int b)
+{
+	if (a < b)
+		return (b);
+	else
+		return (a);
+}
+
 float	ft_fmax(float a, float b)
 {
 	if (a < b)

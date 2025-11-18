@@ -8,7 +8,7 @@ SRC_DIR = src/
 INC_DIR = headers/
 
 ADDFLAGS = -D DEBUG=0
-CFLAGS = -Wall -Wextra -Werror -MMD -mavx2 $(ADDFLAGS) -I $(INC_DIR)
+CFLAGS = -Wall -Werror -Wextra -MMD -mavx2 $(ADDFLAGS) -I $(INC_DIR) -Iprivate/
 SRCS =	string/ft_split.c\
 		string/ft_strchr.c\
 		string/ft_strchrpos.c\
@@ -94,13 +94,13 @@ SRCS =	string/ft_split.c\
 		convert/ft_strtol.c\
 		convert/ft_strtoi.c\
 \
-		printf/converts.c\
-		printf/nbrtostr.c\
-		printf/utils.c\
-		printf/float.c\
-		printf/core.c\
+		printf/format.c\
+		printf/flags.c\
 		printf/printf.c\
-		printf/snprintf.c\
+		printf/signed.c\
+		printf/unsigned.c\
+		printf/value.c\
+		printf/tag.c\
 \
 		get_next_line/utils.c\
 		get_next_line/core.c\
