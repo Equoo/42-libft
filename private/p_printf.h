@@ -18,13 +18,13 @@
 # include <sys/types.h>
 
 # define PRINTF_BUFFER_SIZE 4096
-# define FORMAT_FLAGS "-+0 #"
+# define FORMAT_FLAGS "-+0 #!"
 # define TYPES_N 10
 # define FORMAT_TYPES "diuoxXfFcsp"
 
 # define BASE10 "0123456789"
-# define BASE16L "0123456789abcdef0x"
-# define BASE16U "0123456789ABCDEF0X"
+# define BASE16L "0123456789abcdef"
+# define BASE16U "0123456789ABCDEF"
 
 typedef enum e_format_sizes
 {
@@ -53,7 +53,8 @@ typedef enum e_format_flags
 	FLAG_PLUS = 1 << 11,
 	FLAG_ZERO = 1 << 12,
 	FLAG_SPACE = 1 << 13,
-	FLAG_HASH = 1 << 14
+	FLAG_HASH = 1 << 14,
+	FLAG_FREE = 1 << 15
 }							t_format_flags;
 
 typedef struct s_format_tag
