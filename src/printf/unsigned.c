@@ -79,6 +79,8 @@ size_t	unsigned_to_str(char *str, const size_t size,
 	if (!(tag.flags & FLAG_MINUS))
 		str += ft_lmax(tag.width - nb_len, 0);
 	unsigned_headers(str, tag.flags);
+	if (!nb)
+		str[0] = '0';
 	while (nb)
 	{
 		str[len--] = base[nb % baselen];

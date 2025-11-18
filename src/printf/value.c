@@ -12,6 +12,7 @@
 
 #include "p_printf.h"
 #include "libft.h"
+#include <stdlib.h>
 
 static t_fvalue	get_signed_value(va_list ap, t_format_tag tag)
 {
@@ -82,8 +83,10 @@ size_t	value_to_str(char *buffer, size_t size,
 	}
 	else if (tag.flags & FLAG_S)
 	{
-		ft_memcpy(buffer, value.s, ft_strlen(value.s)); // TODO: MIN SIZE
+		ft_memcpy(buffer, value.s, ft_strlen(value.s)); // TODO: MIN SIZE	
 		written = ft_strlen(value.s);
+		if (tag.flags & FLAG_FREE)
+			free(value.s);
 	}
 	// else if (tag.flags & (FLAG_F | FLAG_FU))
 		// written = double_to_str(buffer, size, value.double, tag);
