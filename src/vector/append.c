@@ -18,7 +18,7 @@ int	vec_append(t_vec *vector, void *element)
 	t_vec_header	*header;
 	size_t			new_capacity;
 
-	if (!vector || !*vector)
+	if (!vector)
 		return (1);
 	header = _vec_header(*vector);
 	if (header->size >= header->capacity)
@@ -35,3 +35,4 @@ int	vec_append(t_vec *vector, void *element)
 	header->size++;
 	return (0);
 }
+
