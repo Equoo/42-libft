@@ -76,7 +76,7 @@ void	*garbage_collector(t__xgarbage *data)
 		if (!data->allocations[i] && ++i)
 			continue ;
 		total += data->allocations[i]->size;
-		ft_free(data->allocations[i]);
+		ft_free(data->allocations[i] + 1);
 		i++;
 	}
 	free(data->allocations);
