@@ -160,7 +160,7 @@ debug:
 
 .PHONY: release
 release:
-	$(MAKE) -j$(shell nproc) --no-print-directory ADDFLAGS="-D DEBUG=0 -O3" $(NAME)
+	$(MAKE) -j$(shell nproc) --no-print-directory ADDFLAGS="-D DEBUG=0 -O3 -flto" $(NAME)
 
 %/:
 	mkdir -p $@
@@ -172,7 +172,7 @@ $(DIR_OBJ)%.o: $(SRC_DIR)%.c
 
 $(NAME): $(DIR_OBJ) $(OBJS) Makefile
 	$(AR) $@ $(OBJS)
-	ranlib $(NAME)
+	llvm-ranlib-12 $(NAME)
 
 .PHONY: clean
 clean:
