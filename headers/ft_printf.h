@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:16:10 by dderny            #+#    #+#             */
-/*   Updated: 2025/11/18 02:28:28 by dderny           ###   ########.fr       */
+/*   Updated: 2026/02/14 17:24:34 by dderny                  ###   ########   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 ** @return The number of characters printed (excluding the null byte
 ** used to end output to strings).
 */
-int				ft_vprintf(const char *format, va_list ap);
+int	ft_vprintf(const char *format, va_list ap);
 
 /**
 ** @brief Prints a formatted string to the standard output using a variable
@@ -48,7 +48,7 @@ int				ft_vprintf(const char *format, va_list ap);
 ** @return The number of characters printed (excluding the null byte
 ** used to end output to strings).
 */
-int				ft_vdprintf(int fd, const char *format, va_list ap);
+int	ft_vdprintf(int fd, const char *format, va_list ap);
 
 /**
 ** @brief Produces output according to a format.
@@ -64,9 +64,10 @@ int				ft_vdprintf(int fd, const char *format, va_list ap);
 **               according to the format specifiers.
 **
 ** @return The number of characters printed (excluding the null byte used to
-**         end output to strings), or a negative value if an output error occurs.
+**         end output to strings),
+	or a negative value if an output error occurs.
 */
-int				ft_printf(const char *format, ...);
+int	ft_printf(const char *format, ...);
 
 /**
 ** @brief Produces output according to a format.
@@ -83,9 +84,10 @@ int				ft_printf(const char *format, ...);
 **               according to the format specifiers.
 **
 ** @return The number of characters printed (excluding the null byte used to
-**         end output to strings), or a negative value if an output error occurs.
+**         end output to strings),
+	or a negative value if an output error occurs.
 */
-int				ft_dprintf(int fd, const char *format, ...);
+int	ft_dprintf(int fd, const char *format, ...);
 
 int	format(char *str, const size_t size, char *format, ...);
 int	vformat(char *str, const size_t size, char *format, va_list ap);
