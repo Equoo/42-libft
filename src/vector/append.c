@@ -6,12 +6,12 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:47:20 by dderny            #+#    #+#             */
-/*   Updated: 2025/05/08 16:49:51 by dderny           ###   ########.fr       */
+/*   Updated: 2026/02/17 04:17:49 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_vector.h"
+#include "libft.h"
 
 int	vec_append(t_vec *vector, void *element)
 {
@@ -24,8 +24,8 @@ int	vec_append(t_vec *vector, void *element)
 	if (header->size >= header->capacity)
 	{
 		new_capacity = header->capacity * 2;
-		header = ft_xrealloc(_alloc_garbage(header),
-				header, new_capacity, ALLOC_VECTOR);
+		header = ft_xrealloc(_alloc_garbage(header), header, new_capacity,
+				ALLOC_VECTOR);
 		if (!header)
 			return (1);
 		*vector = header->data;
@@ -35,4 +35,3 @@ int	vec_append(t_vec *vector, void *element)
 	header->size++;
 	return (0);
 }
-

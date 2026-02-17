@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 09:47:32 by dderny            #+#    #+#             */
-/*   Updated: 2025/11/18 02:28:56 by dderny           ###   ########.fr       */
+/*   Updated: 2026/02/17 03:59:35 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 int	ft_vdprintf(int fd, const char *format, va_list ap)
 {
 	char	buffer[PRINTF_BUFFER_SIZE];
+	int		len;
 
-	int len = vformat(buffer, PRINTF_BUFFER_SIZE, (char *)format, ap);
+	len = vformat(buffer, PRINTF_BUFFER_SIZE, (char *)format, ap);
 	if (write(fd, buffer, len) == -1)
 		return (-1);
 	return (len);

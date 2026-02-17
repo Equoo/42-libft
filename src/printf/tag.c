@@ -6,12 +6,12 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 02:03:26 by dderny            #+#    #+#             */
-/*   Updated: 2025/11/18 02:06:55 by dderny           ###   ########.fr       */
+/*   Updated: 2026/02/17 03:59:26 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "p_printf.h"
 #include "libft.h"
+#include "p_printf.h"
 #include <limits.h>
 
 static t_format_sizes	tag_get_size(char **c)
@@ -52,8 +52,8 @@ static int	get_digit(char **c)
 
 int	tag_get_number(char **str)
 {
-	int		nbr;
-	int		digit;
+	int	nbr;
+	int	digit;
 
 	nbr = 0;
 	if (!ft_isdigit(**str) || **str == '0')
@@ -92,6 +92,6 @@ t_format_tag	tag_from_str(char **format)
 	if (get_typeflag(**format, &tag.flags))
 		(*format)++;
 	else
-		(void)tag; // TODO: ERROR
+		return ((t_format_tag){0});
 	return (tag);
 }

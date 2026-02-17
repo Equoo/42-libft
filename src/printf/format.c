@@ -6,16 +6,14 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 16:08:38 by dderny            #+#    #+#             */
-/*   Updated: 2025/11/18 02:03:20 by dderny           ###   ########.fr       */
+/*   Updated: 2026/02/17 04:02:45 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "p_printf.h"
-#include "libft.h"
-#include <errno.h>
 #include <limits.h>
-#include <stdint.h>
 #include <stdarg.h>
+#include <stdint.h>
 
 static size_t	cp_to_next_tag(char *buffer, char **format, const size_t size)
 {
