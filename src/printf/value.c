@@ -6,12 +6,12 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 02:03:29 by dderny            #+#    #+#             */
-/*   Updated: 2025/11/18 02:05:04 by dderny           ###   ########.fr       */
+/*   Updated: 2026/02/17 04:05:04 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "p_printf.h"
 #include "libft.h"
+#include "p_printf.h"
 #include <stdlib.h>
 
 static t_fvalue	get_signed_value(va_list ap, t_format_tag tag)
@@ -66,8 +66,9 @@ t_fvalue	get_value(va_list ap, t_format_tag tag)
 	return (v);
 }
 
-size_t	value_to_str(char *buffer, size_t size,
-				t_fvalue value, t_format_tag tag)
+// ft_memcpy ? TODO: MIN SIZE
+size_t	value_to_str(char *buffer, size_t size, t_fvalue value,
+		t_format_tag tag)
 {
 	size_t	written;
 
@@ -83,12 +84,12 @@ size_t	value_to_str(char *buffer, size_t size,
 	}
 	else if (tag.flags & FLAG_S)
 	{
-		ft_memcpy(buffer, value.s, ft_strlen(value.s)); // TODO: MIN SIZE	
+		ft_memcpy(buffer, value.s, ft_strlen(value.s));
 		written = ft_strlen(value.s);
 		if (tag.flags & FLAG_FREE)
 			free(value.s);
 	}
-	// else if (tag.flags & (FLAG_F | FLAG_FU))
-		// written = double_to_str(buffer, size, value.double, tag);
+	else if (tag.flags & (FLAG_F | FLAG_FU))
+		written = double_to_str(buffer, size, value.f, tag);
 	return (written);
 }
