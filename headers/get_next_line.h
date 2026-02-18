@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:25:43 by dderny            #+#    #+#             */
-/*   Updated: 2025/02/07 01:39:10 by dderny           ###   ########.fr       */
+/*   Updated: 2026/02/18 22:05:59 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,7 @@ typedef struct s_gnl_data
  * @return A pointer to the line read, or NULL if there is nothing more to read
  *         or an error occurs.
  */
-char			*get_next_line(int fd);
-
-char			*read_line(t_gnl_data *data, char *buffer);
-char			*read_until_newline(t_gnl_data *data, char *buffer);
-char			*read_buffer(t_gnl_data *data);
+int				get_next_line(int fd, char **line);
 
 ssize_t			get_newline(char *str);
 char			*gnl_strjoin(char *s1, char *s2);
