@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 02:03:29 by dderny            #+#    #+#             */
-/*   Updated: 2026/02/17 04:05:04 by dderny           ###   ########.fr       */
+/*   Updated: 2026/02/20 18:39:13 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,7 @@ size_t	value_to_str(char *buffer, size_t size, t_fvalue value,
 		written = 1;
 	}
 	else if (tag.flags & FLAG_S)
-	{
-		ft_memcpy(buffer, value.s, ft_strlen(value.s));
-		written = ft_strlen(value.s);
-		if (tag.flags & FLAG_FREE)
-			free(value.s);
-	}
+		written = string_to_str(buffer, size, value.s, tag);
 	else if (tag.flags & (FLAG_F | FLAG_FU))
 		written = double_to_str(buffer, size, value.f, tag);
 	return (written);

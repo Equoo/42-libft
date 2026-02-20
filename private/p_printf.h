@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 02:09:47 by dderny            #+#    #+#             */
-/*   Updated: 2026/02/17 04:43:20 by dderny           ###   ########.fr       */
+/*   Updated: 2026/02/20 18:45:24 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,7 @@ size_t						unsigned_to_str(char *str, const size_t size,
 								uint64_t nb, t_format_tag tag);
 size_t						double_to_str(char *str, size_t size, float nb,
 								t_format_tag tag);
+size_t						string_to_str(char *buffer, const size_t size,
+								char *str, t_format_tag tag);
 
 #endif

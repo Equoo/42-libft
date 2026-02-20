@@ -100,6 +100,7 @@ SRCS =	string/ft_split.c\
 		printf/signed.c\
 		printf/unsigned.c\
 		printf/double.c\
+		printf/string.c\
 		printf/value.c\
 		printf/tag.c\
 \
