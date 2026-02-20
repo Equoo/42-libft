@@ -6,7 +6,7 @@
 /*   By: dderny <dderny@42lyon.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:25:54 by dderny            #+#    #+#             */
-/*   Updated: 2026/02/18 22:08:57 by dderny           ###   ########.fr       */
+/*   Updated: 2026/02/20 19:29:43 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ int	get_next_line(int fd, char **line)
 	data = getfddata(fd);
 	if (!data)
 		return (-1);
-	errno = 0;
 	*line = NULL;
+	len = 0;
 	if (data->state != GNL_ENDED)
 	{
 		if (data->pos != -1 && !data->buf[data->pos + 1])
@@ -109,7 +109,7 @@ int	get_next_line(int fd, char **line)
 		else
 			*line = read_buffer(data, &len);
 	}
-	if (!line)
+	if (!*line)
 		*data = (t_gnl_data){.state = GNL_UNUSED, .pos = 0, .fd = 0};
 	if (errno)
 		return (-1);
