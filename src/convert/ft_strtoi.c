@@ -6,11 +6,11 @@
 /*   By: zsonie <zsonie@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 21:44:39 by zsonie            #+#    #+#             */
-/*   Updated: 2026/02/24 18:04:26 by zsonie           ###   ########lyon.fr   */
+/*   Updated: 2026/02/24 18:18:56 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "libft.h"
 #include <limits.h>
 #include <errno.h>
 
