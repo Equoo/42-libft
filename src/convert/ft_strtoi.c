@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtoi.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dderny <dderny@42lyon.fr>                  +#+  +:+       +#+        */
+/*   By: zsonie <zsonie@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/11 23:48:41 by dderny            #+#    #+#             */
-/*   Updated: 2025/04/17 11:32:23 by dderny           ###   ########.fr       */
+/*   Created: 2026/02/23 21:44:39 by zsonie            #+#    #+#             */
+/*   Updated: 2026/02/24 18:18:56 by dderny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 #include <limits.h>
 #include <errno.h>
 
@@ -33,6 +32,8 @@ static int	get_digit(char c, int base)
 
 static char	*process_start(char *str, int *base, int *sign)
 {
+	char	*before_zeros;
+
 	if (*base == 0 && *str == '0' && *(str + 1) == 'x' && str++ && str++)
 		*base = 16;
 	else if (*base == 0 && *str == '0' && str++)
@@ -45,10 +46,11 @@ static char	*process_start(char *str, int *base, int *sign)
 		*sign = -1;
 	else if (*str == '+')
 		str++;
+	before_zeros = str;
 	while (*str && *str == '0')
 		str++;
 	if (*str && *str != '-' && *str != '+'
-		&& get_digit(*str, *base) == -1)
+		&& get_digit(*str, *base) == -1 && str == before_zeros)
 	{
 		errno = EINVAL;
 		return (NULL);
