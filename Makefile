@@ -174,7 +174,6 @@ $(DIR_OBJ)%.o: $(SRC_DIR)%.c
 
 $(NAME): $(DIR_OBJ) $(OBJS) Makefile
 	$(AR) $@ $(OBJS)
-	llvm-ranlib-12 $(NAME)
 
 .PHONY: clean
 clean:
